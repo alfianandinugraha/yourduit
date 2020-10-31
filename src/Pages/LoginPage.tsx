@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import useInputForm from '../Hooks/useInputForm'
 
 const LoginPage = () => {
   const [listCurrency] = useState<{ name: string; value: string }[]>([
@@ -13,6 +14,8 @@ const LoginPage = () => {
     }
   ])
 
+  const [inputName, setInputName] = useInputForm()
+
   return (
     <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
       <Container className="m-auto">
@@ -24,7 +27,12 @@ const LoginPage = () => {
         <Row className="mt-4">
           <Col sm="12" className="text-center">
             <div>Insert your name</div>
-            <Form.Control type="text" placeholder="John Doe" className="mt-2"/>
+            <Form.Control 
+              type="text" 
+              placeholder="John Doe" 
+              className="mt-2"
+              onChange={setInputName}
+            />
           </Col>
         </Row>
         <Row className="mt-4">
