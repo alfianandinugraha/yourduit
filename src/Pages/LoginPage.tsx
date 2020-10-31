@@ -45,7 +45,7 @@ const LoginPage = () => {
         </Row>
       </Container>
       <Container className="position-absolute p-0" style={{bottom: '16px'}}>
-        <Row className="w-100">
+        <Row className="w-100 m-auto">
           <Col sm="12">
             <Button style={
               {
