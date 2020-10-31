@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
 const LoginPage = () => {
+  const [listCurrency] = useState<{ name: string; value: string }[]>([
+    {
+      name: 'Indonesia Rupiah',
+      value: 'rp'
+    },
+    {
+      name: 'US Dollar',
+      value: '$'
+    }
+  ])
+
   return (
     <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
       <Container className="m-auto">
