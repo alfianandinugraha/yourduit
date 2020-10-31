@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
-const useInputForm = (): [string, (e: any) => void] => {
+const useInputForm = (): [string, (e: React.ChangeEvent<HTMLInputElement>) => void] => {
   const [value, setValue] = useState<string>("")
 
-  const updateValue = (e: any) => setValue(e.target.value)
+  const updateValue = (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)
 
   return [value, updateValue]
 }
