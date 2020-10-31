@@ -63,6 +63,12 @@ const LoginPage = () => {
               }
             }
               className="text-primary w-100 m-auto"
+              onClick={
+                () => {
+                  localStorage.setItem('name', inputName)
+                  localStorage.setItem('currency', inputCurrency)
+                }
+              }
             >Next</Button>
           </Col>
         </Row>
