@@ -1,3 +1,7 @@
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
 $theme-colors: ("primary":#158467, "danger": #f05454);
 
 @import '~bootstrap/scss/bootstrap.scss';
