@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 import useInputForm from '../Hooks/useInputForm'
 
@@ -15,6 +15,7 @@ const LoginPage = () => {
   ])
 
   const [inputName, setInputName] = useInputForm()
+  const [inputCurrency, setInputCurrency] = useInputForm(listCurrency[0].value)
 
   return (
     <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
@@ -38,7 +39,7 @@ const LoginPage = () => {
         <Row className="mt-4">
           <Col sm="12" className="text-center">
             <div>Select your currency</div>
-            <Form.Control as="select" className="mt-2">
+            <Form.Control as="select" className="mt-2" onChange={setInputCurrency}>
               {
                 listCurrency.map((currency) => {
                   return (
