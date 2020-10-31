@@ -1,9 +1,9 @@
 import React from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Container, Row, Col, Form, Button } from 'react-bootstrap'
 
 const LoginPage = () => {
   return (
-    <div className="bg-primary w-100 d-flex text-white" style={{ height: '100vh' }}>
+    <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
       <Container className="m-auto">
         <Row>
           <Col sm="12">
@@ -23,6 +23,20 @@ const LoginPage = () => {
               <option>US Dollar</option>
               <option>Indonesia Rupiah</option>
             </Form.Control>
+          </Col>
+        </Row>
+      </Container>
+      <Container className="position-absolute p-0" style={{bottom: '16px'}}>
+        <Row className="w-100">
+          <Col sm="12">
+            <Button style={
+              {
+                backgroundColor: 'white',
+                boxShadow: '0 3px 6px 0px rgba(00,00,00, 0.16)',
+              }
+            }
+              className="text-primary w-100 m-auto"
+            >Next</Button>
           </Col>
         </Row>
       </Container>
