@@ -31,8 +31,15 @@ const LoginPage = () => {
           <Col sm="12" className="text-center">
             <div>Select your currency</div>
             <Form.Control as="select" className="mt-2">
-              <option>US Dollar</option>
-              <option>Indonesia Rupiah</option>
+              {
+                listCurrency.map((currency) => {
+                  return (
+                    <option value={currency.value} key={currency.value}>
+                      {currency.name} ({currency.value}) 
+                    </option>
+                  )
+                })
+              }
             </Form.Control>
           </Col>
         </Row>
