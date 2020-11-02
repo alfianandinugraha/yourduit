@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import ActivityStore from './ActivityStore'
 import UserInfoContext from './UserInfoContext'
 
 interface Props {
@@ -9,7 +10,9 @@ export const Store = (props: Props) => {
   return (
     <>
       <UserInfoContext>
-        {props.children}
+        <ActivityStore>
+          {props.children}
+        </ActivityStore>
       </UserInfoContext>
     </>
   )
