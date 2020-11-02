@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
+import DashboardPage from './Pages/DashboardPage';
 import LoginPage from './Pages/LoginPage';
 import { Store } from './Store/Store';
 
@@ -14,7 +15,7 @@ function App() {
           </Route>
           <Container>
             <Route exact path="/dashboard">
-              <h1>Hello this is dashboard !</h1>
+              <DashboardPage />
             </Route>
           </Container>
         </Switch>
