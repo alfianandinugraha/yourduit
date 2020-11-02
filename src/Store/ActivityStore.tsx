@@ -4,10 +4,12 @@ interface Props {
   children: ReactNode
 }
 
-export const ActivityStore = (props: Props) => {
+const ActivityStore = (props: Props) => {
   return (
     <div>
       {props.children}
     </div>
   )
 }
+
+export default ActivityStore
