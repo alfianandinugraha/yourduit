@@ -1,8 +1,9 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 interface Props {
   nominal: number;
-  children: ReactNode;
+  text: string;
+  color: string;
 }
 
 export const CashBoard = (props: Props) => {
@@ -20,8 +21,10 @@ export const CashBoard = (props: Props) => {
           padding: "25px 0 25px 19px"
         }
       }>
-        {props.children}
-        <h1>{props.nominal}</h1>
+        <div>{props.text}</div>
+        <div className={`text-${props.color}`}>
+          <h1>{props.nominal}</h1>
+        </div>
       </div>
     </div>
   )
