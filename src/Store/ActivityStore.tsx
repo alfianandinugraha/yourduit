@@ -18,6 +18,13 @@ interface ActivityContext {
   setActivities: (activity: Activity[]) => void
 }
 
+const activityStoreInitialValue: ActivityContext = {
+  activities: [],
+  setActivities: () => {}
+}
+
+export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
+
 const ActivityStore = (props: Props) => {
   return (
     <div>
