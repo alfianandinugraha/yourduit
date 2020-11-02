@@ -27,10 +27,10 @@ const DashboardPage = () => {
       </Row>
       <Row>
         <Col md="6">
-          <CashBoard nominal={700000} text="Spending this month" color="danger"/>
+          <CashBoard nominal={700000} text="Spending this month" color="danger" currency="Rp"/>
         </Col>
         <Col md="6">
-          <CashBoard nominal={1500000} text="Income this month" color="primary"/>
+          <CashBoard nominal={1500000} text="Income this month" color="primary" currency="Rp"/>
         </Col>
       </Row>
     </>

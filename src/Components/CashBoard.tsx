@@ -4,6 +4,7 @@ interface Props {
   nominal: number;
   text: string;
   color: string;
+  currency: string;
 }
 
 export const CashBoard = (props: Props) => {
@@ -24,7 +25,7 @@ export const CashBoard = (props: Props) => {
       }>
         <div>{props.text}</div>
         <div className={`text-${props.color} d-flex`} style={{marginTop: '10px'}}>
-          <span>Rp</span>
+          <span>{props.currency}</span>
           <h1>{props.nominal}</h1>
         </div>
       </div>
