@@ -42,7 +42,7 @@ const DashboardPage = () => {
           <div><b>Recent Activity</b></div>
           <div className="mt-3">
             {
-              activities.map((val) => <ActivityItem {...val}/>)
+              activities.map((val) => <ActivityItem {...val} key={val.id}/>)
             }
           </div>
         </Col>
