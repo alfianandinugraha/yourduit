@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import { CashBoard } from '../Components/CashBoard'
 
 const DashboardPage = () => {
   return (
@@ -22,6 +23,18 @@ const DashboardPage = () => {
         </Col>
         <Col sm="12">
           <h1>Alfian Andi</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="6">
+          <CashBoard nominal={700000}>
+            <div className="text-danger">Spending this month</div>
+          </CashBoard>
+        </Col>
+        <Col md="6">
+          <CashBoard nominal={1500000}>
+            <div className="text-primary">Income this month</div>
+          </CashBoard>
         </Col>
       </Row>
     </>
