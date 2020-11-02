@@ -1,4 +1,8 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, ReactNode } from 'react'
+
+interface Props {
+  children: ReactNode
+}
 
 interface UserInfo {
   name: string;
@@ -20,16 +24,21 @@ const userInfoStoreInitialValue: UserInfoStore = {
 
 export const userInfoContext = React.createContext<UserInfoStore>(userInfoStoreInitialValue)
 
-const UserInfoContext = () => {
+const UserInfoContext = (props: Props) => {
   const [userInfo, setUserInfo] = useReducer(
     (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo,
     userInfoStoreInitialValue.userInfo
   )
 
   return (
-    <div>
-      
-    </div>
+    <userInfoContext.Provider value={
+      {
+        userInfo: userInfo,
+        setUserInfo: setUserInfo
+      }
+    }>
+      {props.children}
+    </userInfoContext.Provider>
   )
 }
 
