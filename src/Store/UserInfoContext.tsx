@@ -10,20 +10,21 @@ interface UserInfoStore {
   setUserInfo: (userInfo: UserInfo) => void
 }
 
-export const userInfoContext = React.createContext<UserInfoStore>({
+const userInfoStoreInitialValue: UserInfoStore = {
   userInfo: {
     name: "Guest",
     currency: "$"
   },
-  setUserInfo: () => {}
-})
+  setUserInfo: () => { }
+}
+
+export const userInfoContext = React.createContext<UserInfoStore>(userInfoStoreInitialValue)
 
 const UserInfoContext = () => {
   const [userInfo, setUserInfo] = useReducer(
-    (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo, {
-      name: "Guest",
-      currency: "$"
-    })
+    (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo,
+    userInfoStoreInitialValue.userInfo
+  )
 
   return (
     <div>
