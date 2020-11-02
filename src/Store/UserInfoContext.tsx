@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 
 interface UserInfo {
   name: string;
@@ -19,6 +19,12 @@ export const userInfoContext = React.createContext<UserInfoStore>({
 })
 
 const UserInfoContext = () => {
+  const [userInfo, setUserInfo] = useReducer(
+    (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo, {
+      name: "Guest",
+      currency: "$"
+    })
+
   return (
     <div>
       
