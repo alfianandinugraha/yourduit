@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface Props {
-  text: string;
   nominal: number;
+  children: ReactNode;
 }
 
 export const CashBoard = (props: Props) => {
@@ -20,7 +20,7 @@ export const CashBoard = (props: Props) => {
           padding: "25px 0 25px 19px"
         }
       }>
-        <div>Spending this month</div>
+        {props.children}
         <h1>{props.nominal}</h1>
       </div>
     </div>
