@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
+import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
 import { activityContext } from '../Store/ActivityStore'
 
@@ -41,16 +42,7 @@ const DashboardPage = () => {
           <div><b>Recent Activity</b></div>
           <div className="mt-3">
             {
-              activities.map((val) => {
-                const textColor = val.type === "1" ? "danger" : "primary";
-
-                return (
-                  <div className="d-flex mb-2" key={val.id}>
-                    <div>{val.description}</div>
-                    <div className={`ml-auto text-${textColor}`}>{val.nominal}</div>
-                  </div>
-                )
-              })
+              activities.map((val) => <ActivityItem {...val}/>)
             }
           </div>
         </Col>
