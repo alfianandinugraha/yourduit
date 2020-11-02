@@ -4,7 +4,7 @@ interface Props {
   children: ReactNode
 }
 
-interface Activity {
+export interface Activity {
   id: number;
   description: string;
   nominal: number;
