@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useReducer } from 'react'
 
 interface Props {
   children: ReactNode
@@ -26,6 +26,11 @@ const activityStoreInitialValue: ActivityContext = {
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
 
 const ActivityStore = (props: Props) => {
+  const [activities, setActivities] = useReducer(
+    (activities: Activity[], newActivities: Activity[]) => newActivities,
+    activityStoreInitialValue.activities
+  )
+
   return (
     <div>
       {props.children}
