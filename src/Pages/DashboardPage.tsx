@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { CashBoard } from '../Components/CashBoard'
+import { activityContext } from '../Store/ActivityStore'
 
 const DashboardPage = () => {
+  const {activities} = useContext(activityContext)
+
   return (
     <>
       <div className="bg-primary w-100 position-absolute" style={{
@@ -31,6 +34,25 @@ const DashboardPage = () => {
         </Col>
         <Col md="6">
           <CashBoard nominal={1500000} text="Income this month" color="primary" currency="Rp"/>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <div><b>Recent Activity</b></div>
+          <div className="mt-3">
+            {
+              activities.map((val) => {
+                const textColor = val.type === "1" ? "danger" : "primary";
+
+                return (
+                  <div className="d-flex mb-2" key={val.id}>
+                    <div>{val.description}</div>
+                    <div className={`ml-auto text-${textColor}`}>{val.nominal}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </Col>
       </Row>
     </>
