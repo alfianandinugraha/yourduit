@@ -32,9 +32,14 @@ const ActivityStore = (props: Props) => {
   )
 
   return (
-    <div>
+    <activityContext.Provider value={
+      {
+        activities: activities,
+        setActivities: setActivities
+      }
+    }>
       {props.children}
-    </div>
+    </activityContext.Provider>
   )
 }
 
