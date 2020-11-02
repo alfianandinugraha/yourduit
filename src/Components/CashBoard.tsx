@@ -26,7 +26,7 @@ export const CashBoard = (props: Props) => {
         <div>{props.text}</div>
         <div className={`text-${props.color} d-flex`} style={{marginTop: '10px'}}>
           <span>{props.currency}</span>
-          <h1>{props.nominal}</h1>
+          <h1>{new Intl.NumberFormat('id-ID').format(props.nominal)}</h1>
         </div>
       </div>
     </div>
