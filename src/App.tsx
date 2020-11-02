@@ -13,11 +13,11 @@ function App() {
           <Route exact path="/">
             <LoginPage />
           </Route>
-          <Container>
-            <Route exact path="/dashboard">
+          <Route path="/dashboard">
+            <Container>
               <DashboardPage />
-            </Route>
-          </Container>
+            </Container>
+          </Route>
         </Switch>
       </Store>
     </>
