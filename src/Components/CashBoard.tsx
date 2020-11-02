@@ -23,7 +23,8 @@ export const CashBoard = (props: Props) => {
         }
       }>
         <div>{props.text}</div>
-        <div className={`text-${props.color}`}>
+        <div className={`text-${props.color} d-flex`} style={{marginTop: '10px'}}>
+          <span>Rp</span>
           <h1>{props.nominal}</h1>
         </div>
       </div>
