@@ -3,19 +3,14 @@ import { Col, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
 import { activityContext } from '../Store/ActivityStore'
+import { BackgroundHero } from '../Style/Styled'
 
 const DashboardPage = () => {
-  const {activities} = useContext(activityContext)
+  const { activities } = useContext(activityContext)
 
   return (
     <>
-      <div className="bg-primary w-100 position-absolute" style={{
-        height: "406px",
-        top: "0",
-        left: "0",
-        borderRadius: "0 0 20px 20px",
-        zIndex: -1
-      }}></div>
+      <BackgroundHero className="bg-primary w-100 position-absolute" height="406px"/>
       <Row style={
         {
           marginTop: "79px",
