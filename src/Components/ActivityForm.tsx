@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
@@ -27,7 +27,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
         !isActivityFormShow ? null : (
           <ActivityFormWrapper className="position-fixed w-100">
             <Container className="py-3">
-              <Row>
+              <Row className="mb-4">
                 <Col className="d-flex justify-content-between">
                   <ActivityFormTitle>Add Activity</ActivityFormTitle>
                   <Circle
@@ -38,6 +38,21 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                   >
                     <PlusIcon width="13px" height="13px" rotate="45deg"/>
                   </Circle>
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="input" placeholder="Order a food"/>
+                </Col>
+              </Row>
+              <Row className="mb-4">
+                <Col>
+                  <Form.Control type="number" placeholder="1.99"/>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Control type="date"/>
                 </Col>
               </Row>
             </Container>
