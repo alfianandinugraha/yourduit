@@ -42,8 +42,21 @@ export const CashBoardContent = styled.div`
 export const CashSummaryWrapper = styled.div`
   background-color: white;
   padding: .75rem 0;
+  bottom: 0;
+  left: 0;
 
   h1 {
     margin-bottom: 0;
   }
+`
+
+interface Shape {
+  width: string;
+  height: string;
+}
+
+export const Circle = styled.div<Shape>`
+  width: ${props => props.width};
+  height: ${props => props.height};
+  border-radius: 50%;
 `
