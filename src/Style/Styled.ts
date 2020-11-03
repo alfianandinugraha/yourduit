@@ -27,5 +27,5 @@ export const CashBoardWrapper = styled.div`
 `
 
 export const CashBoardContent = styled.div`
-  "25px 0 25px 19px"
+  padding: 25px 0 25px 19px;
 `
