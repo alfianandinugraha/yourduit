@@ -3,7 +3,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
-import { ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
+import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
 
 interface Props {
   activity?: Activity
@@ -55,6 +55,15 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                   <Form.Control type="date"/>
                 </Col>
               </Row>
+              <ActivityFormButtonGroup>
+                <Col>
+                  <p className="text-center mb-1">Type of activity</p>
+                  <div className="d-flex justify-content-between">
+                    <ActivityFormButton variant="danger">Spending</ActivityFormButton>
+                    <ActivityFormButton variant="primary">Income</ActivityFormButton>
+                  </div>
+                </Col>
+              </ActivityFormButtonGroup>
             </Container>
           </ActivityFormWrapper>
         )

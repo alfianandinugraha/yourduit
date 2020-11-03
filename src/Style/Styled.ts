@@ -76,3 +76,11 @@ export const ActivityFormWrapper = styled.div`
 export const ActivityFormTitle = styled.h1`
   font-size: 25px;
 `
+
+export const ActivityFormButtonGroup = styled(Row)`
+  margin-top: 7rem;
+`
+
+export const ActivityFormButton = styled(BaseButton)`
+  width: 47%;
+`
