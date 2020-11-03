@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useContext, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
+import { activityContext } from '../Store/ActivityStore'
 
 interface Props {
   nominal: number;
@@ -32,11 +33,14 @@ export const CashSummary = (props: Props) => {
   )
 }
 
-export const IncludeCashSummary = ({ children }: {children: ReactNode}) => {
+export const IncludeCashSummary = ({ children }: { children: ReactNode }) => {
+  const { getTotalNominalThisMonth } = useContext(activityContext)
+  const [summary] = useState<number>(getTotalNominalThisMonth().summary)
+
   return (
     <>
       {children}
-      <CashSummary nominal={700000}/>
+      <CashSummary nominal={summary}/>
     </>
   )
 }

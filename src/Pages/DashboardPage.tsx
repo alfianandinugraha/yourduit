@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
@@ -6,7 +6,8 @@ import { activityContext } from '../Store/ActivityStore'
 import { BackgroundHero, GreetingDashboard, ListActivityDashboard } from '../Style/Styled'
 
 const DashboardPage = () => {
-  const { activities } = useContext(activityContext)
+  const { activities, getTotalNominalThisMonth } = useContext(activityContext)
+  const [{ income, spending }] = useState(getTotalNominalThisMonth())
 
   return (
     <>
@@ -21,10 +22,10 @@ const DashboardPage = () => {
       </GreetingDashboard>
       <Row>
         <Col md="6">
-          <CashBoard nominal={700000} text="Spending this month" color="danger" currency="Rp"/>
+          <CashBoard nominal={spending} text="Spending this month" color="danger" currency="Rp"/>
         </Col>
         <Col md="6">
-          <CashBoard nominal={1500000} text="Income this month" color="primary" currency="Rp"/>
+          <CashBoard nominal={income} text="Income this month" color="primary" currency="Rp"/>
         </Col>
       </Row>
       <ListActivityDashboard style={{marginBottom: '120px'}}>
