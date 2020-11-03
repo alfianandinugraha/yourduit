@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
+import { ActivityForm } from './Components/ActivityForm';
 import { IncludeCashSummary } from './Components/CashSummary';
 import DashboardPage from './Pages/DashboardPage';
 import LoginPage from './Pages/LoginPage';
@@ -19,6 +20,7 @@ function App() {
               <Container>
                 <IncludeCashSummary>
                   <DashboardPage />
+                  <ActivityForm />
                 </IncludeCashSummary>
               </Container>
             </Route>
