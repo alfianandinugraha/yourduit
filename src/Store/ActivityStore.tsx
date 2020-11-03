@@ -13,9 +13,16 @@ export interface Activity {
   updatedAt: number;
 }
 
+export interface TotalNominalType {
+  income: number;
+  spending: number;
+  summary: number;
+}
+
 interface ActivityContext {
   activities: Activity[];
-  setActivities: (activity: Activity[]) => void
+  setActivities: (activity: Activity[]) => void;
+  getTotalNominal: (from?: number, to?: number) => TotalNominalType;
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -45,7 +52,14 @@ const activityStoreInitialValue: ActivityContext = {
       updatedAt: 3
     },
   ],
-  setActivities: () => {}
+  setActivities: () => { },
+  getTotalNominal: (from: number = 0, to: number = 0): TotalNominalType => {
+    return {
+      income: 0,
+      spending: 0,
+      summary: 0
+    }
+  }
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
@@ -56,11 +70,40 @@ const ActivityStore = (props: Props) => {
     activityStoreInitialValue.activities
   )
 
+  const getTotalNominal = (
+    from: number = activities[0].updatedAt,
+    to: number = activities[activities.length - 1].updatedAt
+  ): TotalNominalType => {
+    let income = 0;
+    let spending = 0;
+    let summary = 0;
+
+    activities
+      .filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to)
+      .forEach((activity) => {
+        switch (activity.type) {
+          case "1":
+            income += activity.nominal
+            break
+          case "0":
+            spending += activity.nominal
+            break
+          default:
+            break;
+        }
+    })
+
+    summary = income - spending
+
+    return {income, spending, summary}
+  }
+
   return (
     <activityContext.Provider value={
       {
         activities: activities,
-        setActivities: setActivities
+        setActivities: setActivities,
+        getTotalNominal
       }
     }>
       {props.children}
