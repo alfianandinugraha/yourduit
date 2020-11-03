@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, Form, Button } from 'react-bootstrap'
+import { Container, Row, Col, Form } from 'react-bootstrap'
 import useInputForm from '../Hooks/useInputForm'
+import { WhiteButton } from '../Style/Styled'
 
 const LoginPage = () => {
   const [listCurrency] = useState<{ name: string; value: string }[]>([
@@ -56,12 +57,7 @@ const LoginPage = () => {
       <Container className="position-absolute p-0" style={{bottom: '16px'}}>
         <Row className="w-100 m-auto">
           <Col sm="12">
-            <Button style={
-              {
-                backgroundColor: 'white',
-                boxShadow: '0 3px 6px 0px rgba(00,00,00, 0.16)',
-              }
-            }
+            <WhiteButton
               className="text-primary w-100 m-auto"
               onClick={
                 () => {
@@ -69,7 +65,7 @@ const LoginPage = () => {
                   localStorage.setItem('currency', inputCurrency)
                 }
               }
-            >Next</Button>
+            >Next</WhiteButton>
           </Col>
         </Row>
       </Container>
