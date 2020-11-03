@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import ActivityStore from './ActivityStore'
+import { ThemeStore } from './ThemeStore'
 import UserInfoContext from './UserInfoContext'
 
 interface Props {
@@ -11,7 +12,9 @@ export const Store = (props: Props) => {
     <>
       <UserInfoContext>
         <ActivityStore>
-          {props.children}
+          <ThemeStore>
+            {props.children}
+          </ThemeStore>
         </ActivityStore>
       </UserInfoContext>
     </>
