@@ -25,3 +25,7 @@ export const CashBoardWrapper = styled.div`
   box-shadow: 0px 3px 6px 0 rgb(00,00,00, 0.16);
   border-left: 14px solid;
 `
+
+export const CashBoardContent = styled.div`
+  "25px 0 25px 19px"
+`

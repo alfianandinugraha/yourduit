@@ -1,5 +1,5 @@
 import React from 'react'
-import { CashBoardWrapper } from '../Style/Styled'
+import { CashBoardContent, CashBoardWrapper } from '../Style/Styled'
 
 interface Props {
   nominal: number;
@@ -11,17 +11,13 @@ interface Props {
 export const CashBoard = (props: Props) => {
   return (
     <CashBoardWrapper className={`border-${props.color}`}>
-      <div style={
-        {
-          padding: "25px 0 25px 19px"
-        }
-      }>
+      <CashBoardContent>
         <div>{props.text}</div>
         <div className={`text-${props.color} d-flex`} style={{marginTop: '10px'}}>
           <span>{props.currency}</span>
           <h1>{new Intl.NumberFormat('id-ID').format(props.nominal)}</h1>
         </div>
-      </div>
+      </CashBoardContent>
     </CashBoardWrapper>
   )
 }
