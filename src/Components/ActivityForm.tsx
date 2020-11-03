@@ -19,7 +19,7 @@ const defaultActivity: Activity = {
 };
 
 export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
-  const { isActivityFormShow } = useContext(themeContext);
+  const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext);
 
   return (
     <>
@@ -34,6 +34,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                     width="30.87px"
                     height="30.87px"
                     className="bg-danger d-flex justify-content-center align-items-center cursor-pointer"
+                    onClick={() => setIsActivityFormShow(false)}
                   >
                     <PlusIcon width="13px" height="13px"/>
                   </Circle>
