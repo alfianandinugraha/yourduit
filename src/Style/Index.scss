@@ -9,4 +9,8 @@ $theme-colors: ("primary":#158467, "danger": #f05454);
   height: 52px !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';

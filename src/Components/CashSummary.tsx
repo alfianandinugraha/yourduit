@@ -21,7 +21,7 @@ export const CashSummary = (props: Props) => {
               </div>
             </div>
             <div className="ml-auto">
-              <Circle width="70px" height="70px" className="bg-primary d-flex justify-content-center align-items-center">
+              <Circle width="70px" height="70px" className="bg-primary d-flex justify-content-center align-items-center cursor-pointer">
                 <PlusIcon/>
               </Circle>
             </div>
