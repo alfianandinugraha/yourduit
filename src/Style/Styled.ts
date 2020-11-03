@@ -38,3 +38,7 @@ export const CashBoardWrapper = styled.div`
 export const CashBoardContent = styled.div`
   padding: 25px 0 25px 19px;
 `
+
+export const CashSummaryWrapper = styled.div`
+  
+`
