@@ -3,12 +3,15 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
 import { activityContext } from '../Store/ActivityStore'
+import { themeContext } from '../Store/ThemeStore'
 
 interface Props {
   nominal: number;
 }
 
 export const CashSummary = (props: Props) => {
+  const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext)
+
   return (
     <CashSummaryWrapper className="position-fixed w-100">
       <Container>
@@ -22,7 +25,14 @@ export const CashSummary = (props: Props) => {
               </div>
             </div>
             <div className="ml-auto">
-              <Circle width="70px" height="70px" className="bg-primary d-flex justify-content-center align-items-center cursor-pointer">
+              <Circle 
+                width="70px" 
+                height="70px" 
+                className="bg-primary d-flex justify-content-center align-items-center cursor-pointer"
+                onClick={
+                  () => setIsActivityFormShow(!isActivityFormShow)
+                }
+              >
                 <PlusIcon/>
               </Circle>
             </div>
