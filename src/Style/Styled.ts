@@ -40,5 +40,10 @@ export const CashBoardContent = styled.div`
 `
 
 export const CashSummaryWrapper = styled.div`
-  
+  background-color: white;
+  padding: .75rem 0;
+
+  h1 {
+    margin-bottom: 0;
+  }
 `

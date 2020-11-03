@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper } from '../Style/Styled'
 
 interface Props {
@@ -7,8 +8,20 @@ interface Props {
 
 export const CashSummary = (props: Props) => {
   return (
-    <CashSummaryWrapper>
-      <h1>this is cash summary</h1>
+    <CashSummaryWrapper className="position-fixed w-100">
+      <Container>
+        <Row>
+          <Col>
+            <div>
+              <div>Cash this month</div>
+              <div className="d-flex text-primary">
+                <span>Rp</span>
+                <h1>{props.nominal}</h1>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </CashSummaryWrapper>
   )
 }
