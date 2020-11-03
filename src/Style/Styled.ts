@@ -54,9 +54,9 @@ export const CashSummaryWrapper = styled.div`
   }
 `
 
-interface Shape {
-  width: string;
-  height: string;
+export interface Shape {
+  width?: string;
+  height?: string;
 }
 
 export const Circle = styled.div<Shape>`
