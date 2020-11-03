@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
 import { activityContext } from '../Store/ActivityStore'
-import { BackgroundHero, GreetingDashboard } from '../Style/Styled'
+import { BackgroundHero, GreetingDashboard, ListActivityDashboard } from '../Style/Styled'
 
 const DashboardPage = () => {
   const { activities } = useContext(activityContext)
@@ -27,7 +27,7 @@ const DashboardPage = () => {
           <CashBoard nominal={1500000} text="Income this month" color="primary" currency="Rp"/>
         </Col>
       </Row>
-      <Row>
+      <ListActivityDashboard style={{marginBottom: '120px'}}>
         <Col>
           <div><b>Recent Activity</b></div>
           <div className="mt-3">
@@ -36,7 +36,7 @@ const DashboardPage = () => {
             }
           </div>
         </Col>
-      </Row>
+      </ListActivityDashboard>
     </>
   )
 }

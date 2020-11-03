@@ -27,6 +27,10 @@ export const GreetingDashboard = styled(Row)`
   color: white;
 `
 
+export const ListActivityDashboard = styled(Row)`
+  margin-bottom: 120px;
+`
+
 export const CashBoardWrapper = styled.div`
   background-color: white;
   border-radius: 5px;
