@@ -26,7 +26,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
       {
         !isActivityFormShow ? null : (
           <ActivityFormWrapper className="position-fixed w-100">
-            <Container>
+            <Container className="py-3">
               <Row>
                 <Col className="d-flex justify-content-between">
                   <ActivityFormTitle>Add Activity</ActivityFormTitle>
