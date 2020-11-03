@@ -1,4 +1,4 @@
-import { Row } from 'react-bootstrap'
+import { Row, Button } from 'react-bootstrap'
 import styled from 'styled-components'
 
 interface BackgroundHeroProps {
@@ -11,6 +11,15 @@ export const BackgroundHero = styled.div<BackgroundHeroProps>`
   left: 0;
   border-radius: 0 0 20px 20px;
   z-index: -1;
+`
+
+export const BaseButton = styled(Button)`
+  height: 52px !important;
+`
+
+export const WhiteButton = styled(Button)`
+  background-color: white;
+  box-shadow: 0 3px 6px 0px rgba(00,00,00, 0.16);
 `
 
 export const GreetingDashboard = styled(Row)`
