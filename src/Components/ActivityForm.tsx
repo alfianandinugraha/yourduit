@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
+import { Col, Container, Row } from 'react-bootstrap';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
+import { ActivityFormTitle, ActivityFormWrapper } from '../Style/Styled';
 
 interface Props {
   activity?: Activity
@@ -21,7 +23,17 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
   return (
     <>
       {
-        isActivityFormShow ? <h1>Hello world !</h1> : null
+        !isActivityFormShow ? null : (
+          <ActivityFormWrapper className="position-fixed w-100">
+            <Container>
+              <Row>
+                <Col>
+                  <ActivityFormTitle>Add Activity</ActivityFormTitle>
+                </Col>
+              </Row>
+            </Container>
+          </ActivityFormWrapper>
+        )
       }
     </>
   )

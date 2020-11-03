@@ -64,3 +64,15 @@ export const Circle = styled.div<Shape>`
   height: ${props => props.height};
   border-radius: 50%;
 `
+
+export const ActivityFormWrapper = styled.div`
+  z-index: 50;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+`
+
+export const ActivityFormTitle = styled.h1`
+  font-size: 25px;
+`
