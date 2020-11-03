@@ -36,7 +36,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                     className="bg-danger d-flex justify-content-center align-items-center cursor-pointer"
                     onClick={() => setIsActivityFormShow(false)}
                   >
-                    <PlusIcon width="13px" height="13px"/>
+                    <PlusIcon width="13px" height="13px" rotate="45deg"/>
                   </Circle>
                 </Col>
               </Row>

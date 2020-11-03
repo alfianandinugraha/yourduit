@@ -1,13 +1,18 @@
 import React from 'react'
 import { Shape } from '../Style/Styled'
 
-export const PlusIcon = (shape: Shape = {width: '39px', height: '39px'}) => {
+interface PlusIconProps extends Shape {
+  rotate?: string; 
+}
+
+export const PlusIcon = (shape: PlusIconProps = {width: '39px', height: '39px'}) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39"
       style={
         {
           height: shape.height,
-          width: shape.width
+          width: shape.width,
+          transform: `rotate(${shape.rotate})`
         }
       }
     >
