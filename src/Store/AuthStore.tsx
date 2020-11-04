@@ -23,7 +23,8 @@ export const AuthStore = (props: Props) => {
     const name = localStorage.getItem('yourduit.netlify.app-name')
     const currency = localStorage.getItem('yourduit.netlify.app-currency')
 
-    if(name && currency) setLoggedIn(true)
+    if (name && currency) setLoggedIn(true)
+    else setLoggedIn(false)
   })
 
   return (
