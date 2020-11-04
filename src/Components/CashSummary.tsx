@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
