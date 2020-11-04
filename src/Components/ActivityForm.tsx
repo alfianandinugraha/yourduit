@@ -33,7 +33,7 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
       {
         description: valueDescription,
         nominal: +valueNominal,
-        id: valueDate,
+        id: new Date().getTime(),
         createdAt: valueDate,
         updatedAt: valueDate,
         type: type
