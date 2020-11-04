@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import useInputForm from '../Hooks/useInputForm'
+import { authContext } from '../Store/AuthStore'
 import { WhiteButton } from '../Style/Styled'
 
 const LoginPage = () => {
+  const { setLoggedIn } = useContext(authContext)
+
   const [listCurrency] = useState<{ name: string; value: string }[]>([
     {
       name: 'Indonesia Rupiah',
@@ -65,6 +68,7 @@ const LoginPage = () => {
                   () => {
                     localStorage.setItem('yourduit.netlify.app-name', inputName)
                     localStorage.setItem('yourduit.netlify.app-currency', inputCurrency)
+                    setLoggedIn(true)
                   }
                 }
               >Next</WhiteButton>
