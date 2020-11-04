@@ -2,41 +2,43 @@ import React, { useContext, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
 import useInputForm from '../Hooks/useInputForm';
-import { Activity, activityContext } from '../Store/ActivityStore'
+import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
 import { Backdrop } from './Backdrop';
 
 interface Props {
-  activity?: Activity
+  activity?: Activity,
+  getPayload?: (activity: Activity) => void
 }
 
-const defaultActivity: Activity = {
+const defaultProps: Activity = {
   id: 0,
   nominal: 0,
   type: "1",
   description: "",
   updatedAt: 0,
-  createdAt: 0
+  createdAt: 0,
 };
 
-export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
+export const ActivityForm = (props: Props = { activity: defaultProps }) => {
   const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext);
-  const { addActivity } = useContext(activityContext);
   const [valueDescription, setValueDescription] = useInputForm("")
   const [valueNominal, setValueNominal] = useInputForm("")
   const [valueDate, setValueDate] = useState(0)
 
-  const addActivityHandler = (type: "1" | "0") => {
-    addActivity({
-      description: valueDescription,
-      nominal: +valueNominal,
-      id: valueDate,
-      createdAt: valueDate,
-      updatedAt: valueDate,
-      type: type
-    })
-    setIsActivityFormShow(false)
+  const buttonTypeHandler = (type: "1" | "0") => {
+    if (!props.getPayload) return
+    props.getPayload(
+      {
+        description: valueDescription,
+        nominal: +valueNominal,
+        id: valueDate,
+        createdAt: valueDate,
+        updatedAt: valueDate,
+        type: type
+      }
+    )
   }
 
   return (
@@ -85,11 +87,11 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                   <div className="d-flex justify-content-between">
                     <ActivityFormButton
                       variant="danger"
-                      onClick={() => addActivityHandler("0")}
+                      onClick={() => buttonTypeHandler("0")}
                     >Spending</ActivityFormButton>
                     <ActivityFormButton
                       variant="primary"
-                      onClick={() => addActivityHandler("1")}
+                      onClick={() => buttonTypeHandler("1")}
                     >Income</ActivityFormButton>
                   </div>
                 </Col>
