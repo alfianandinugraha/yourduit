@@ -96,7 +96,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
               </ActivityFormButtonGroup>
             </Container>
           </ActivityFormWrapper>    
-          <Backdrop />
+          <Backdrop onClick={() => setIsActivityFormShow(false)}/>
           </>
         )
       }
