@@ -1,4 +1,4 @@
-import React, { ReactNode, useReducer } from 'react'
+import React, { ReactNode, useEffect, useReducer } from 'react'
 
 interface Props {
   children: ReactNode
@@ -18,6 +18,13 @@ export const AuthStore = (props: Props) => {
   const [isLoggedIn, setLoggedIn] = useReducer(
     (state: boolean, newState: boolean) => newState, false
   )
+
+  useEffect(() => {
+    const name = localStorage.getItem('yourduit.netlify.app-name')
+    const currency = localStorage.getItem('yourduit.netlify.app-currency')
+
+    if(name && currency) setLoggedIn(true)
+  })
 
   return (
     <authContext.Provider value={{isLoggedIn, setLoggedIn}}>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import useInputForm from '../Hooks/useInputForm'
 import { WhiteButton } from '../Style/Styled'
 
@@ -57,15 +58,17 @@ const LoginPage = () => {
       <Container className="position-absolute p-0" style={{bottom: '16px'}}>
         <Row className="w-100 m-auto">
           <Col sm="12">
-            <WhiteButton
-              className="text-primary w-100 m-auto"
-              onClick={
-                () => {
-                  localStorage.setItem('name', inputName)
-                  localStorage.setItem('currency', inputCurrency)
+            <Link to="/dashboard">
+              <WhiteButton
+                className="text-primary w-100 m-auto"
+                onClick={
+                  () => {
+                    localStorage.setItem('yourduit.netlify.app-name', inputName)
+                    localStorage.setItem('yourduit.netlify.app-currency', inputCurrency)
+                  }
                 }
-              }
-            >Next</WhiteButton>
+              >Next</WhiteButton>
+            </Link>
           </Col>
         </Row>
       </Container>
