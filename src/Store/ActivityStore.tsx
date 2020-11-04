@@ -24,6 +24,7 @@ interface ActivityContext {
   setActivities: (activity: Activity[]) => void;
   getTotalNominal: (from?: number, to?: number) => TotalNominalType;
   getTotalNominalThisMonth: () => TotalNominalType;
+  addActivity: (activity: Activity) => void;
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -67,7 +68,8 @@ const activityStoreInitialValue: ActivityContext = {
       spending: 0,
       summary: 0
     }
-  }
+  },
+  addActivity: () => {}
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
@@ -121,13 +123,18 @@ const ActivityStore = (props: Props) => {
     return totalNominal
   }
 
+  const addActivity = (activity: Activity) => {
+
+  }
+
   return (
     <activityContext.Provider value={
       {
         activities: activities,
         setActivities: setActivities,
         getTotalNominal,
-        getTotalNominalThisMonth
+        getTotalNominalThisMonth,
+        addActivity
       }
     }>
       {props.children}
