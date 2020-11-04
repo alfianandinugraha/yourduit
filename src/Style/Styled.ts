@@ -87,3 +87,13 @@ export const ActivityFormButtonGroup = styled(Row)`
 export const ActivityFormButton = styled(BaseButton)`
   width: 47%;
 `
+
+export const BackdropWrapper = styled.div`
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.55;
+`
