@@ -1,4 +1,5 @@
 import React, { ReactNode, useReducer } from 'react'
+import { fetchAllActivityFromLocalStorage } from '../Functions/LocalStorage'
 
 interface Props {
   children: ReactNode
@@ -77,7 +78,7 @@ export const activityContext = React.createContext<ActivityContext>(activityStor
 const ActivityStore = (props: Props) => {
   const [activities, setActivities] = useReducer(
     (activities: Activity[], newActivities: Activity[]) => newActivities,
-    activityStoreInitialValue.activities
+    fetchAllActivityFromLocalStorage()
   )
 
   const getTotalNominal = (
