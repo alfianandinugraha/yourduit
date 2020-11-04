@@ -48,6 +48,8 @@ export const CashSummaryWrapper = styled.div`
   padding: .75rem 0;
   bottom: 0;
   left: 0;
+  border-radius: 1rem;
+  box-shadow: 0 -6px 6px 0 rgba(00,00,00, 0.16);
 
   h1 {
     margin-bottom: 0;
