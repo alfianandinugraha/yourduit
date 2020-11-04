@@ -4,6 +4,7 @@ import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
 import { activityContext } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
+import { ActivityForm } from './ActivityForm'
 
 interface Props {
   nominal: number;
@@ -53,7 +54,8 @@ export const IncludeCashSummary = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {children}
-      <CashSummary nominal={summary}/>
+      <CashSummary nominal={summary} />
+      <ActivityForm />
     </>
   )
 }
