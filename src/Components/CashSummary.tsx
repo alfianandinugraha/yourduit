@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useState } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
@@ -45,7 +45,7 @@ export const CashSummary = (props: Props) => {
 
 export const IncludeCashSummary = ({ children }: { children: ReactNode }) => {
   const { getTotalNominalThisMonth } = useContext(activityContext)
-  const [summary] = useState<number>(getTotalNominalThisMonth().summary)
+  const { summary } = getTotalNominalThisMonth()
 
   return (
     <>

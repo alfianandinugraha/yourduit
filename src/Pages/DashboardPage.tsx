@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
@@ -7,7 +7,7 @@ import { BackgroundHero, GreetingDashboard, ListActivityDashboard } from '../Sty
 
 const DashboardPage = () => {
   const { activities, getTotalNominalThisMonth } = useContext(activityContext)
-  const [{ income, spending }] = useState(getTotalNominalThisMonth())
+  const { income, spending } = getTotalNominalThisMonth()
 
   return (
     <>
