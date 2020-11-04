@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
+import { ProtectedAuthRoute } from './Auth/ProtectedAuthRoute';
 import { ProtectedRoute } from './Auth/ProtectedRoute';
 import { ActivityForm } from './Components/ActivityForm';
 import { IncludeCashSummary } from './Components/CashSummary';
@@ -14,7 +15,9 @@ function App() {
       <Store>
         <Switch>
           <Route exact path="/">
-            <LoginPage />
+            <ProtectedAuthRoute>
+              <LoginPage />
+            </ProtectedAuthRoute>
           </Route>
           <ProtectedRoute> 
             <Switch>
