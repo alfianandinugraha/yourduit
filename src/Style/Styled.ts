@@ -71,6 +71,7 @@ export const ActivityFormWrapper = styled.div`
   left: 0;
   background-color: white;
   border-radius: 20px 20px 0 0;
+  height: 83%;
 `
 
 export const ActivityFormTitle = styled.h1`
@@ -78,7 +79,7 @@ export const ActivityFormTitle = styled.h1`
 `
 
 export const ActivityFormButtonGroup = styled(Row)`
-  margin-top: 7rem;
+  margin-top: auto;
 `
 
 export const ActivityFormButton = styled(BaseButton)`
