@@ -39,6 +39,7 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
         type: type
       }
     )
+    setIsActivityFormShow(false)
   }
 
   return (
