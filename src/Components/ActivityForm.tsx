@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
+import useInputForm from '../Hooks/useInputForm';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
@@ -20,6 +21,9 @@ const defaultActivity: Activity = {
 
 export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
   const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext);
+  const [valueDescription, setValueDescription] = useInputForm("")
+  const [valueNominal, setValueNominal] = useInputForm("")
+  const [valueDate, setValueDate] = useState(0)
 
   return (
     <>
@@ -42,17 +46,22 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="input" placeholder="Order a food"/>
+                  <Form.Control type="input" placeholder="Order a food" onChange={setValueDescription}/>
                 </Col>
               </Row>
               <Row className="mb-4">
                 <Col>
-                  <Form.Control type="number" placeholder="1.99"/>
+                  <Form.Control type="number" placeholder="1.99" onChange={setValueNominal}/>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <Form.Control type="date"/>
+                  <Form.Control type="date" onChange={
+                    (e: React.ChangeEvent<HTMLInputElement>) => {
+                      const datePicked = new Date(e.target.value).getTime()
+                      setValueDate(datePicked)
+                    }
+                  } />
                 </Col>
               </Row>
               <ActivityFormButtonGroup>
