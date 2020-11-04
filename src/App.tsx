@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Switch } from 'react-router-dom';
+import { ProtectedRoute } from './Auth/ProtectedRoute';
 import { ActivityForm } from './Components/ActivityForm';
 import { IncludeCashSummary } from './Components/CashSummary';
 import DashboardPage from './Pages/DashboardPage';
@@ -15,16 +16,18 @@ function App() {
           <Route exact path="/">
             <LoginPage />
           </Route>
-          <Switch>
-            <Route path="/dashboard">
-              <Container>
-                <IncludeCashSummary>
-                  <DashboardPage />
-                  <ActivityForm />
-                </IncludeCashSummary>
-              </Container>
-            </Route>
-          </Switch>
+          <ProtectedRoute> 
+            <Switch>
+              <Route path="/dashboard">
+                <Container>
+                  <IncludeCashSummary>
+                    <DashboardPage />
+                    <ActivityForm />
+                  </IncludeCashSummary>
+                </Container>
+              </Route>
+            </Switch>
+          </ProtectedRoute>
         </Switch>
       </Store>
     </>
