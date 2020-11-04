@@ -5,6 +5,7 @@ import useInputForm from '../Hooks/useInputForm';
 import { Activity, activityContext } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
+import { Backdrop } from './Backdrop';
 
 interface Props {
   activity?: Activity
@@ -42,6 +43,7 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
     <>
       {
         !isActivityFormShow ? null : (
+          <>
           <ActivityFormWrapper className="position-fixed w-100">
             <Container className="py-3 h-100 d-flex flex-column">
               <Row className="mb-4">
@@ -93,7 +95,9 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                 </Col>
               </ActivityFormButtonGroup>
             </Container>
-          </ActivityFormWrapper>
+          </ActivityFormWrapper>    
+          <Backdrop />
+          </>
         )
       }
     </>

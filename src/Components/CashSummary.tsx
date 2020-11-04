@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode, useContext, useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { CashSummaryWrapper, Circle } from '../Style/Styled'
 import { PlusIcon } from '../Common/PlusIcon'
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const CashSummary = (props: Props) => {
-  const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext)
+  const { isActivityFormShow, setIsActivityFormShow, setIsBackdropShow } = useContext(themeContext)
 
   return (
     <CashSummaryWrapper className="position-fixed w-100">
@@ -30,7 +30,10 @@ export const CashSummary = (props: Props) => {
                 height="70px" 
                 className="bg-primary d-flex justify-content-center align-items-center cursor-pointer"
                 onClick={
-                  () => setIsActivityFormShow(!isActivityFormShow)
+                  () => {
+                    setIsActivityFormShow(!isActivityFormShow)
+                    setIsBackdropShow(true)
+                  }
                 }
               >
                 <PlusIcon/>
