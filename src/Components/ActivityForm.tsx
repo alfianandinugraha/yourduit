@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
 import useInputForm from '../Hooks/useInputForm';
-import { Activity } from '../Store/ActivityStore'
+import { Activity, activityContext } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
 
@@ -21,9 +21,22 @@ const defaultActivity: Activity = {
 
 export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
   const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext);
+  const { addActivity } = useContext(activityContext);
   const [valueDescription, setValueDescription] = useInputForm("")
   const [valueNominal, setValueNominal] = useInputForm("")
   const [valueDate, setValueDate] = useState(0)
+
+  const addActivityHandler = (type: "1" | "0") => {
+    addActivity({
+      description: valueDescription,
+      nominal: +valueNominal,
+      id: valueDate,
+      createdAt: valueDate,
+      updatedAt: valueDate,
+      type: type
+    })
+    setIsActivityFormShow(false)
+  }
 
   return (
     <>
@@ -68,8 +81,14 @@ export const ActivityForm = (props: Props = {activity: defaultActivity}) => {
                 <Col>
                   <p className="text-center mb-1">Type of activity</p>
                   <div className="d-flex justify-content-between">
-                    <ActivityFormButton variant="danger">Spending</ActivityFormButton>
-                    <ActivityFormButton variant="primary">Income</ActivityFormButton>
+                    <ActivityFormButton
+                      variant="danger"
+                      onClick={() => addActivityHandler("0")}
+                    >Spending</ActivityFormButton>
+                    <ActivityFormButton
+                      variant="primary"
+                      onClick={() => addActivityHandler("1")}
+                    >Income</ActivityFormButton>
                   </div>
                 </Col>
               </ActivityFormButtonGroup>
