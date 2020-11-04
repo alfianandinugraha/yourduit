@@ -124,7 +124,7 @@ const ActivityStore = (props: Props) => {
   }
 
   const addActivity = (activity: Activity) => {
-
+    setActivities([activity, ...activities])
   }
 
   return (
