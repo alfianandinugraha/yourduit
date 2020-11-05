@@ -4,9 +4,25 @@ interface Props {
   children: ReactNode
 }
 
+export interface LocationCurrency {
+  locale: string;
+  currency: string;
+}
+
+export const listLocation: LocationCurrency[] = [
+  {
+    locale: "id-ID",
+    currency: "Rp"
+  },
+  {
+    locale: "en-US",
+    currency: "$"
+  }
+]
+
 interface UserInfo {
   name: string;
-  currency: string;
+  location: LocationCurrency;
 }
 
 interface UserInfoStore {
@@ -17,7 +33,10 @@ interface UserInfoStore {
 const userInfoStoreInitialValue: UserInfoStore = {
   userInfo: {
     name: "Guest",
-    currency: "$"
+    location: {
+      locale: "id-ID",
+      currency: "Rp"
+    }
   },
   setUserInfo: () => { }
 }

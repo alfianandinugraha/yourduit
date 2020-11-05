@@ -1,26 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import useInputForm from '../Hooks/useInputForm'
 import { authContext } from '../Store/AuthStore'
+import { listLocation, LocationCurrency } from '../Store/UserInfoContext'
 import { WhiteButton } from '../Style/Styled'
 
 const LoginPage = () => {
   const { setLoggedIn } = useContext(authContext)
 
-  const [listCurrency] = useState<{ name: string; value: string }[]>([
-    {
-      name: 'Indonesia Rupiah',
-      value: 'rp'
-    },
-    {
-      name: 'US Dollar',
-      value: '$'
-    }
-  ])
-
   const [inputName, setInputName] = useInputForm()
-  const [inputCurrency, setInputCurrency] = useInputForm(listCurrency[0].value)
+  const [inputCurrency, setInputCurrency] = useInputForm(listLocation[0].locale)
 
   return (
     <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
@@ -46,10 +36,10 @@ const LoginPage = () => {
             <div>Select your currency</div>
             <Form.Control as="select" className="mt-2" onChange={setInputCurrency}>
               {
-                listCurrency.map((currency) => {
+                listLocation.map((currency: LocationCurrency) => {
                   return (
-                    <option value={currency.value} key={currency.value}>
-                      {currency.name} ({currency.value}) 
+                    <option value={currency.locale} key={currency.locale}>
+                      {currency.currency} 
                     </option>
                   )
                 })
