@@ -45,9 +45,19 @@ const userInfoStoreInitialValue: UserInfoStore = {
 export const userInfoContext = React.createContext<UserInfoStore>(userInfoStoreInitialValue)
 
 const UserInfoContext = (props: Props) => {
+  const { name, locale } = fetchUserInfoFromLocalStorage()
+
+  const userInfoDefaultValueLocalStorage = {
+    name,
+    location: {
+      locale,
+      currency: listLocation.filter((val) => val.locale === locale)[0].currency
+    }
+  }
+
   const [userInfo, setUserInfo] = useReducer(
     (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo,
-    fetchUserInfoFromLocalStorage() || userInfoStoreInitialValue.userInfo
+    userInfoDefaultValueLocalStorage || userInfoStoreInitialValue.userInfo
   )
 
   return (
