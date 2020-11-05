@@ -7,9 +7,16 @@ import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
 import { Backdrop } from './Backdrop';
 
+interface ActivityFormPayload {
+  description: string;
+  nominal: number;
+  timestamp: number;
+  type: "1" | "0";
+}
+
 interface Props {
   activity?: Activity,
-  getPayload?: (activity: Activity) => void
+  getPayload?: (payload: ActivityFormPayload) => void
 }
 
 const defaultProps: Activity = {
@@ -33,10 +40,8 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
       {
         description: valueDescription,
         nominal: +valueNominal,
-        id: new Date().getTime(),
-        createdAt: valueDate,
-        updatedAt: valueDate,
-        type: type
+        type: type,
+        timestamp: valueDate
       }
     )
     setIsActivityFormShow(false)

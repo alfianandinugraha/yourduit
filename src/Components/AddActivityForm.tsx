@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { activityContext } from '../Store/ActivityStore'
+import { Activity, activityContext } from '../Store/ActivityStore'
 import { ActivityForm } from './ActivityForm'
 import { saveActivityToLocalStorage } from '../Functions/LocalStorage'
 
@@ -9,8 +9,16 @@ export const AddActivityForm = () => {
   return (
     <>
       <ActivityForm getPayload={(payload) => {
-        addActivity(payload)
-        saveActivityToLocalStorage(payload)
+        const {description, nominal, timestamp, type} = payload
+        const activity: Activity = {
+          description, nominal, type,
+          id: new Date().getTime(),
+          createdAt: timestamp,
+          updatedAt: timestamp,
+        }
+        
+        addActivity(activity)
+        saveActivityToLocalStorage(activity)
       }}/>
     </>
   )
