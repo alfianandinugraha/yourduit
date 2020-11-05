@@ -1,4 +1,5 @@
 import React, { useReducer, ReactNode } from 'react'
+import { fetchUserInfoFromLocalStorage } from '../Functions/LocalStorage'
 
 interface Props {
   children: ReactNode
@@ -46,7 +47,7 @@ export const userInfoContext = React.createContext<UserInfoStore>(userInfoStoreI
 const UserInfoContext = (props: Props) => {
   const [userInfo, setUserInfo] = useReducer(
     (userInfo: UserInfo, newUserInfo: UserInfo) => newUserInfo,
-    userInfoStoreInitialValue.userInfo
+    fetchUserInfoFromLocalStorage() || userInfoStoreInitialValue.userInfo
   )
 
   return (

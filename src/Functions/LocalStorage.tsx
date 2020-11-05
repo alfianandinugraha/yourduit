@@ -37,3 +37,21 @@ export const fetchAllActivityFromLocalStorage = () => {
 
   return activities
 }
+
+export const fetchUserInfoFromLocalStorage = () => {
+  const keyUser = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_ACTIVITY_SEPARATOR + 'user';
+  const result: any = {}
+
+  for (let index = 0; index < localStorage.length; index++) {
+    const element = localStorage.key(index);
+    if (element?.startsWith(keyUser)) { 
+      if (element === keyUser + LOCAL_STORAGE_ACTIVITY_SEPARATOR + "name") {
+        result.name = localStorage.getItem(element)
+      } else if (element === keyUser + LOCAL_STORAGE_ACTIVITY_SEPARATOR + "locale") {
+        result.locale = localStorage.getItem(element)
+      }
+    }
+  }
+
+  return result
+}
