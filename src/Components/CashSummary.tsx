@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const CashSummary = (props: Props) => {
-  const { setIsActivityFormShow, setIsBackdropShow } = useContext(themeContext)
+  const { setIsAddActivityFormShow, setIsBackdropShow } = useContext(themeContext)
   const { userInfo } = useContext(userInfoContext)
   const { location } = userInfo
 
@@ -36,7 +36,7 @@ export const CashSummary = (props: Props) => {
                   className="bg-primary d-flex justify-content-center align-items-center cursor-pointer"
                   onClick={
                     () => {
-                      setIsActivityFormShow(true)
+                      setIsAddActivityFormShow(true)
                       setIsBackdropShow(true)
                     }
                   }
