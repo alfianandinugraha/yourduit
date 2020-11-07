@@ -64,7 +64,7 @@ export const ActivityPage = () => {
         </Col>
       </Row>
       </LayoutProtectedPage>
-      <UpdateActivityForm />
+      <UpdateActivityForm idToUpdate={+id}/>
     </>
   )
 }
