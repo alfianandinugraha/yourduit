@@ -3,12 +3,13 @@ import { Container, Row, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import useInputForm from '../Hooks/useInputForm'
 import { authContext } from '../Store/AuthStore'
-import { listLocation, LocationCurrency } from '../Store/UserInfoContext'
+import { listLocation, LocationCurrency, userInfoContext } from '../Store/UserInfoContext'
 import { WhiteButton } from '../Style/Styled'
 import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_ACTIVITY_SEPARATOR } from '../utils/Prefix'
 
 const LoginPage = () => {
   const { setLoggedIn } = useContext(authContext)
+  const {setUserInfo} = useContext(userInfoContext)
 
   const [inputName, setInputName] = useInputForm()
   const [inputCurrency, setInputCurrency] = useInputForm(listLocation[0].locale)
@@ -68,6 +69,13 @@ const LoginPage = () => {
                       inputCurrency
                     )
                     
+                    setUserInfo({
+                      name: inputName,
+                      location: {
+                        locale: inputCurrency,
+                        currency: listLocation.filter((val) => val.locale === inputCurrency)[0].currency
+                      }
+                    })
                     setLoggedIn(true)
                   }
                 }
