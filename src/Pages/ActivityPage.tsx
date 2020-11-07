@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap'
 import { useParams } from 'react-router'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { Activity, activityContext } from '../Store/ActivityStore'
+import { BackgroundHero } from '../Style/Styled'
 
 export const ActivityPage = () => {
   const { id }: { id: string } = useParams()
@@ -16,7 +17,8 @@ export const ActivityPage = () => {
 
   return (
     <LayoutProtectedPage>
-      <Row>
+      <BackgroundHero className="bg-primary w-100 position-absolute" height="106px"/>
+      <Row className="text-white bg-primary pb-3" style={{ borderRadius: "0 0 20px 20px"}}>
         <Col className="col-12">
           <h1>{activity.description}</h1>
         </Col>
