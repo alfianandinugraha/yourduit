@@ -1,5 +1,5 @@
 import React, { ReactNode, useReducer } from 'react'
-import { deleteActivityFromLocalStorage, fetchAllActivityFromLocalStorage } from '../Functions/LocalStorage'
+import { deleteActivityFromLocalStorage, fetchAllActivityFromLocalStorage, saveActivityToLocalStorage } from '../Functions/LocalStorage'
 
 interface Props {
   children: ReactNode
@@ -36,7 +36,8 @@ interface ActivityContext {
   getTotalNominalThisMonth: () => TotalNominalType;
   addActivity: (activity: Activity) => void;
   getActivityById: (id: number) => Activity;
-  deleteActivity: (id: number) => void
+  deleteActivity: (id: number) => void;
+  updateActivity: (id: number, activity: Activity) => void;
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -83,7 +84,8 @@ const activityStoreInitialValue: ActivityContext = {
   },
   addActivity: () => { },
   getActivityById: () => defaultActivity,
-  deleteActivity: () => {}
+  deleteActivity: () => { },
+  updateActivity: () => { }
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
@@ -154,6 +156,17 @@ const ActivityStore = (props: Props) => {
     deleteActivityFromLocalStorage(id)
   }
 
+  const updateActivity = (id: number, activity: Activity) => {
+    const index = activities.findIndex((activity) => activity.id === id)
+    const newActivity = [...activities]
+    newActivity.splice(index, 1, activity)
+
+    console.log(newActivity)
+
+    setActivities(newActivity)
+    saveActivityToLocalStorage(activity)
+  }
+
   return (
     <activityContext.Provider value={
       {
@@ -163,7 +176,8 @@ const ActivityStore = (props: Props) => {
         getTotalNominalThisMonth,
         addActivity,
         getActivityById,
-        deleteActivity
+        deleteActivity,
+        updateActivity
       }
     }>
       {props.children}
