@@ -34,6 +34,7 @@ export const fetchAllActivityFromLocalStorage = () => {
       activities.push(activity)
     }
   }
+  activities.sort((a, b) => b.updatedAt - a.updatedAt)
 
   return activities
 }
