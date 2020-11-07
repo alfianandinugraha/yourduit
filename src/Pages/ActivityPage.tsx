@@ -3,14 +3,17 @@ import { Col, Row, Container } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router'
 import { PenIcon } from '../Common/PenIcon'
 import { TrashIcon } from '../Common/TrashIcon'
+import { UpdateActivityForm } from '../Components/UpdateActivityForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { Activity, activityContext } from '../Store/ActivityStore'
+import { themeContext } from '../Store/ThemeStore'
 import { userInfoContext } from '../Store/UserInfoContext'
 import { BackgroundHero } from '../Style/Styled'
 
 export const ActivityPage = () => {
   const { id }: { id: string } = useParams()
   const { getActivityById, deleteActivity } = useContext(activityContext)
+  const { setIsUpdateActivityFormShow } = useContext(themeContext)
   const history = useHistory()
   const { userInfo } = useContext(userInfoContext)
   const [activity] = useState<Activity>(getActivityById(+id))
@@ -21,7 +24,8 @@ export const ActivityPage = () => {
   }
 
   return (
-    <LayoutProtectedPage>
+    <>
+      <LayoutProtectedPage>
       <Container className="position-absolute" style={
         {
           top: 24,
@@ -36,7 +40,11 @@ export const ActivityPage = () => {
                 history.push('/dashboard')
               }
             }><TrashIcon /></div>
-            <div className="ml-4"><PenIcon /></div>
+            <div className="ml-4" onClick={
+              () => {
+                setIsUpdateActivityFormShow(true)
+              }
+            }><PenIcon /></div>
           </Col>
         </Row>
       </Container>
@@ -55,6 +63,8 @@ export const ActivityPage = () => {
           <h1>{new Intl.NumberFormat(userInfo.location.locale).format(activity.nominal)}</h1>
         </Col>
       </Row>
-    </LayoutProtectedPage>
+      </LayoutProtectedPage>
+      <UpdateActivityForm />
+    </>
   )
 }
