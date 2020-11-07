@@ -12,21 +12,21 @@ function App() {
     <>
       <Store>
         <Switch>
+          <Route path="/dashboard">
+            <ProtectedRoute> 
+              <DashboardPage />
+            </ProtectedRoute>
+          </Route>
+          <Route path="/activities/:id">
+            <ProtectedRoute> 
+              <ActivityPage />
+            </ProtectedRoute>
+          </Route>
           <Route exact path="/">
             <ProtectedAuthRoute>
               <LoginPage />
             </ProtectedAuthRoute>
           </Route>
-          <ProtectedRoute> 
-            <Switch>
-              <Route path="/dashboard">
-                <DashboardPage />
-              </Route>
-              <Route path="/activities/:id">
-                <ActivityPage />
-              </Route>
-            </Switch>
-          </ProtectedRoute>
         </Switch>
       </Store>
     </>
