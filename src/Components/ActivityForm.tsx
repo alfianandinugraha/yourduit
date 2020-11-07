@@ -29,7 +29,7 @@ const defaultProps: Activity = {
 };
 
 export const ActivityForm = (props: Props = { activity: defaultProps }) => {
-  const { isActivityFormShow, setIsActivityFormShow } = useContext(themeContext);
+  const { isActivityFormShow, setIsActivityFormShow, resetActivityFormShow } = useContext(themeContext);
   const [valueDescription, setValueDescription] = useInputForm("")
   const [valueNominal, setValueNominal] = useInputForm("")
   const [valueDate, setValueDate] = useState(0)
@@ -44,7 +44,7 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
         timestamp: valueDate
       }
     )
-    setIsActivityFormShow(false)
+    resetActivityFormShow()
   }
 
   return (
@@ -104,7 +104,7 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
               </ActivityFormButtonGroup>
             </Container>
           </ActivityFormWrapper>    
-          <Backdrop onClick={() => setIsActivityFormShow(false)}/>
+            <Backdrop onClick={() => resetActivityFormShow()}/>
           </>
         )
       }

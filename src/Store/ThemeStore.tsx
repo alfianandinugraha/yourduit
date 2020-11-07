@@ -5,13 +5,15 @@ interface ThemeContext {
   isActivityFormShow: boolean;
   setIsBackdropShow: (value: boolean) => void;
   setIsActivityFormShow: (value: boolean) => void;
+  resetActivityFormShow: () => void;
 }
 
 export const themeContext = React.createContext<ThemeContext>({
   isActivityFormShow: false,
   isBackdropShow: false,
   setIsActivityFormShow: () => { },
-  setIsBackdropShow: () => { }
+  setIsBackdropShow: () => { },
+  resetActivityFormShow: () => { }
 })
 
 export const ThemeStore = ({children} : {children: ReactNode}) => {
@@ -29,7 +31,11 @@ export const ThemeStore = ({children} : {children: ReactNode}) => {
         isActivityFormShow,
         isBackdropShow,
         setIsActivityFormShow,
-        setIsBackdropShow
+        setIsBackdropShow,
+        resetActivityFormShow: () => {
+          setIsBackdropShow(false)
+          setIsActivityFormShow(false)
+        }
       }
     }>
       {children}
