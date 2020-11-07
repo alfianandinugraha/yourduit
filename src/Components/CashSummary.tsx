@@ -5,6 +5,7 @@ import { PlusIcon } from '../Common/PlusIcon'
 import { activityContext } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { AddActivityForm } from './AddActivityForm'
+import { userInfoContext } from '../Store/UserInfoContext'
 
 interface Props {
   nominal: number;
@@ -12,6 +13,8 @@ interface Props {
 
 export const CashSummary = (props: Props) => {
   const { isActivityFormShow, setIsActivityFormShow, setIsBackdropShow } = useContext(themeContext)
+  const { userInfo } = useContext(userInfoContext)
+  const { location } = userInfo
 
   return (
     <CashSummaryWrapper className="position-fixed w-100">
@@ -21,7 +24,7 @@ export const CashSummary = (props: Props) => {
             <div>
               <div>Cash this month</div>
               <div className="d-flex text-primary">
-                <span>Rp</span>
+                <span>{location.currency}</span>
                 <h1>{props.nominal}</h1>
               </div>
             </div>
