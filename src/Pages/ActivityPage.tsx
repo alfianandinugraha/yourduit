@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router'
 import { PenIcon } from '../Common/PenIcon'
@@ -16,12 +16,16 @@ export const ActivityPage = () => {
   const { setIsUpdateActivityFormShow } = useContext(themeContext)
   const history = useHistory()
   const { userInfo } = useContext(userInfoContext)
-  const [activity] = useState<Activity>(getActivityById(+id))
+  const [activity, setActivity] = useState<Activity>(getActivityById(+id))
   const date = {
     days: new Date(activity.updatedAt).getDay() + 1,
     months: new Date(activity.updatedAt).getMonth() + 1,
     years: new Date(activity.updatedAt).getFullYear(),
   }
+
+  useEffect(() => {
+    setActivity(getActivityById(+id))
+  }, [getActivityById, id])
 
   return (
     <>
@@ -51,7 +55,7 @@ export const ActivityPage = () => {
       <BackgroundHero className="bg-primary w-100 position-absolute" height="106px"/>
       <Row className="text-white bg-primary pb-3 mb-3" style={{ borderRadius: "0 0 20px 20px"}}>
         <Col className="col-12">
-          <h1>{activity.description}</h1>
+            <h1>{activity.description}</h1>
         </Col>
         <Col>
           <span>{`${date.months}/${date.days}/${date.years}`}</span>
@@ -64,7 +68,7 @@ export const ActivityPage = () => {
         </Col>
       </Row>
       </LayoutProtectedPage>
-      <UpdateActivityForm idToUpdate={+id}/>
+      <UpdateActivityForm idToUpdate={+id} activity={activity}/>
     </>
   )
 }

@@ -30,8 +30,8 @@ const defaultProps: Activity = {
 
 export const ActivityForm = (props: Props = { activity: defaultProps }) => {
   const { resetActivityFormShow } = useContext(themeContext);
-  const [valueDescription, setValueDescription] = useInputForm("")
-  const [valueNominal, setValueNominal] = useInputForm("")
+  const [valueDescription, setValueDescription] = useInputForm(props.activity?.description || "")
+  const [valueNominal, setValueNominal] = useInputForm(props.activity?.nominal.toString() || "")
   const [valueDate, setValueDate] = useState(0)
 
   const buttonTypeHandler = (type: "1" | "0") => {
@@ -66,12 +66,22 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
           </Row>
           <Row className="mb-4">
             <Col>
-              <Form.Control type="input" placeholder="Order a food" onChange={setValueDescription}/>
+              <Form.Control
+                type="input"
+                placeholder="Order a food"
+                onChange={setValueDescription}
+                value={valueDescription}
+              />
             </Col>
           </Row>
           <Row className="mb-4">
             <Col>
-              <Form.Control type="number" placeholder="1.99" onChange={setValueNominal}/>
+              <Form.Control
+                type="number"
+                placeholder="1.99"
+                onChange={setValueNominal}
+                value={valueNominal}
+              />
             </Col>
           </Row>
           <Row>
