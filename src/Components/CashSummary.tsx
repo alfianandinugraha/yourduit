@@ -17,36 +17,39 @@ export const CashSummary = (props: Props) => {
   const { location } = userInfo
 
   return (
-    <CashSummaryWrapper className="position-fixed w-100">
-      <Container>
-        <Row>
-          <Col className="d-flex">
-            <div>
-              <div>Cash this month</div>
-              <div className="d-flex text-primary">
-                <span>{location.currency}</span>
-                <h1>{new Intl.NumberFormat(location.locale).format(props.nominal)}</h1>
+    <>
+      <CashSummaryWrapper className="position-fixed w-100">
+        <Container>
+          <Row>
+            <Col className="d-flex">
+              <div>
+                <div>Cash this month</div>
+                <div className="d-flex text-primary">
+                  <span>{location.currency}</span>
+                  <h1>{new Intl.NumberFormat(location.locale).format(props.nominal)}</h1>
+                </div>
               </div>
-            </div>
-            <div className="ml-auto">
-              <Circle 
-                width="70px" 
-                height="70px" 
-                className="bg-primary d-flex justify-content-center align-items-center cursor-pointer"
-                onClick={
-                  () => {
-                    setIsActivityFormShow(!isActivityFormShow)
-                    setIsBackdropShow(true)
+              <div className="ml-auto">
+                <Circle 
+                  width="70px" 
+                  height="70px" 
+                  className="bg-primary d-flex justify-content-center align-items-center cursor-pointer"
+                  onClick={
+                    () => {
+                      setIsActivityFormShow(!isActivityFormShow)
+                      setIsBackdropShow(true)
+                    }
                   }
-                }
-              >
-                <PlusIcon/>
-              </Circle>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </CashSummaryWrapper>
+                >
+                  <PlusIcon/>
+                </Circle>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </CashSummaryWrapper>
+      <AddActivityForm />
+    </>
   )
 }
 
