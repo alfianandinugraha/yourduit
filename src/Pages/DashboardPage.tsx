@@ -22,10 +22,10 @@ const DashboardPage = () => {
       </GreetingDashboard>
       <Row>
         <Col md="6">
-          <CashBoard nominal={spending} text="Spending this month" color="danger" currency="Rp"/>
+          <CashBoard nominal={spending} text="Spending this month" color="danger"/>
         </Col>
         <Col md="6">
-          <CashBoard nominal={income} text="Income this month" color="primary" currency="Rp"/>
+          <CashBoard nominal={income} text="Income this month" color="primary"/>
         </Col>
       </Row>
       <ListActivityDashboard style={{marginBottom: '120px'}}>
