@@ -18,7 +18,7 @@ export const ActivityPage = () => {
   const { userInfo } = useContext(userInfoContext)
   const [activity, setActivity] = useState<Activity>(getActivityById(+id))
   const date = {
-    days: new Date(activity.updatedAt).getDay() + 1,
+    days: new Date(activity.updatedAt).getDate(),
     months: new Date(activity.updatedAt).getMonth() + 1,
     years: new Date(activity.updatedAt).getFullYear(),
   }
