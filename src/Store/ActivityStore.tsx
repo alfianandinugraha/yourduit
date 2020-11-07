@@ -14,6 +14,15 @@ export interface Activity {
   updatedAt: number;
 }
 
+const defaultActivity: Activity = {
+  id: 0,
+  description: "",
+  nominal: 0,
+  type: "0",
+  createdAt: 0,
+  updatedAt: 0
+}
+
 export interface TotalNominalType {
   income: number;
   spending: number;
@@ -26,7 +35,7 @@ interface ActivityContext {
   getTotalNominal: (from?: number, to?: number) => TotalNominalType;
   getTotalNominalThisMonth: () => TotalNominalType;
   addActivity: (activity: Activity) => void;
-  getActivityById: (id: number) => Activity | void;
+  getActivityById: (id: number) => Activity;
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -72,7 +81,7 @@ const activityStoreInitialValue: ActivityContext = {
     }
   },
   addActivity: () => { },
-  getActivityById: () => {}
+  getActivityById: () => defaultActivity
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
