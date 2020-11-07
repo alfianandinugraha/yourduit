@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { PlusIcon } from '../Common/PlusIcon';
+import useDate from '../Hooks/useDate';
 import useInputForm from '../Hooks/useInputForm';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
@@ -33,6 +34,8 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
   const [valueDescription, setValueDescription] = useInputForm(props.activity?.description || "")
   const [valueNominal, setValueNominal] = useInputForm(props.activity?.nominal.toString() || "")
   const [valueDate, setValueDate] = useState(0)
+
+  const { getDay, getMonth, getFullYear, setDate } = useDate(props.activity?.updatedAt || new Date().getTime())
 
   const buttonTypeHandler = (type: "1" | "0") => {
     if (!props.getPayload) return
@@ -86,9 +89,10 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
           </Row>
           <Row>
             <Col>
-              <Form.Control type="date" onChange={
+              <Form.Control type="date" value={`${getFullYear}-${getMonth}-${getDay}`} onChange={
                 (e: React.ChangeEvent<HTMLInputElement>) => {
                   const datePicked = new Date(e.target.value).getTime()
+                  setDate(datePicked)
                   setValueDate(datePicked)
                 }
               } />
