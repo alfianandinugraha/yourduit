@@ -13,7 +13,7 @@ import { BackgroundHero } from '../Style/Styled'
 export const ActivityPage = () => {
   const { id }: { id: string } = useParams()
   const { getActivityById, deleteActivity } = useContext(activityContext)
-  const { setIsUpdateActivityFormShow } = useContext(themeContext)
+  const { setIsUpdateActivityFormShow, setIsBackdropShow } = useContext(themeContext)
   const history = useHistory()
   const { userInfo } = useContext(userInfoContext)
   const [activity, setActivity] = useState<Activity>(getActivityById(+id))
@@ -47,6 +47,7 @@ export const ActivityPage = () => {
             <div className="ml-4" onClick={
               () => {
                 setIsUpdateActivityFormShow(true)
+                setIsBackdropShow(true)
               }
             }><PenIcon /></div>
           </Col>
