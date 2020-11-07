@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
+import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
 import { BackgroundHero, GreetingDashboard, ListActivityDashboard } from '../Style/Styled'
 
@@ -10,7 +11,7 @@ const DashboardPage = () => {
   const { income, spending } = getTotalNominalThisMonth()
 
   return (
-    <>
+    <LayoutProtectedPage>
       <BackgroundHero className="bg-primary w-100 position-absolute" height="406px" />
       <GreetingDashboard>
         <Col sm="12">
@@ -38,7 +39,7 @@ const DashboardPage = () => {
           </div>
         </Col>
       </ListActivityDashboard>
-    </>
+    </LayoutProtectedPage>
   )
 }
 

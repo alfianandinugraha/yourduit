@@ -23,7 +23,6 @@ export const WhiteButton = styled(Button)`
 `
 
 export const GreetingDashboard = styled(Row)`
-  margin-top: 79px;
   color: white;
 `
 
@@ -96,4 +95,8 @@ export const BackdropWrapper = styled.div`
   top: 0;
   left: 0;
   opacity: 0.55;
+`
+
+export const SpacingLayoutTop = styled.div`
+  margin-top: 79px;
 `
