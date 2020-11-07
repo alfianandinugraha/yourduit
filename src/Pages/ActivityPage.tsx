@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Col, Row, Container } from 'react-bootstrap'
 import { useParams } from 'react-router'
+import { PenIcon } from '../Common/PenIcon'
+import { TrashIcon } from '../Common/TrashIcon'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { Activity, activityContext } from '../Store/ActivityStore'
 import { userInfoContext } from '../Store/UserInfoContext'
@@ -19,6 +21,19 @@ export const ActivityPage = () => {
 
   return (
     <LayoutProtectedPage>
+      <Container className="position-absolute" style={
+        {
+          top: 24,
+          right: 0
+        }
+      }>
+        <Row>
+          <Col className="d-flex">
+            <div className="ml-auto"><TrashIcon /></div>
+            <div className="ml-4"><PenIcon /></div>
+          </Col>
+        </Row>
+      </Container>
       <BackgroundHero className="bg-primary w-100 position-absolute" height="106px"/>
       <Row className="text-white bg-primary pb-3 mb-3" style={{ borderRadius: "0 0 20px 20px"}}>
         <Col className="col-12">
