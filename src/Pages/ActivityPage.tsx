@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
+import { activityContext } from '../Store/ActivityStore'
 
-interface Props {
-  
-}
-
-export const ActivityPage = (props: Props) => {
-  const { id }: {id: string} = useParams()
+export const ActivityPage = () => {
+  const { id }: { id: string } = useParams()
+  const { getActivityById } = useContext(activityContext)
+  const [activity] = useState(getActivityById(+id))
 
   return (
     <LayoutProtectedPage>

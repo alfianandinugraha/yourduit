@@ -26,6 +26,7 @@ interface ActivityContext {
   getTotalNominal: (from?: number, to?: number) => TotalNominalType;
   getTotalNominalThisMonth: () => TotalNominalType;
   addActivity: (activity: Activity) => void;
+  getActivityById: (id: number) => Activity | void;
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -70,7 +71,8 @@ const activityStoreInitialValue: ActivityContext = {
       summary: 0
     }
   },
-  addActivity: () => {}
+  addActivity: () => { },
+  getActivityById: () => {}
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
@@ -128,6 +130,10 @@ const ActivityStore = (props: Props) => {
     setActivities([activity, ...activities])
   }
 
+  const getActivityById = (id: number) => {
+    return activities.filter((activity) => activity.id === id)[0]
+  }
+
   return (
     <activityContext.Provider value={
       {
@@ -135,7 +141,8 @@ const ActivityStore = (props: Props) => {
         setActivities: setActivities,
         getTotalNominal,
         getTotalNominalThisMonth,
-        addActivity
+        addActivity,
+        getActivityById
       }
     }>
       {props.children}
