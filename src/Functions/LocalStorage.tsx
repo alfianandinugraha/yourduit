@@ -56,3 +56,10 @@ export const fetchUserInfoFromLocalStorage = () => {
 
   return result
 }
+
+export const deleteActivityFromLocalStorage = (id: number) => {
+  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR
+  const prefix = LOCAL_STORAGE_PREFIX 
+  const key = `${prefix}${separator}activity${separator}${id}`
+  localStorage.removeItem(key)
+}
