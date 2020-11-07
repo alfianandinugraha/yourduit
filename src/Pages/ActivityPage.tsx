@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { PenIcon } from '../Common/PenIcon'
 import { TrashIcon } from '../Common/TrashIcon'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
@@ -10,7 +10,8 @@ import { BackgroundHero } from '../Style/Styled'
 
 export const ActivityPage = () => {
   const { id }: { id: string } = useParams()
-  const { getActivityById } = useContext(activityContext)
+  const { getActivityById, deleteActivity } = useContext(activityContext)
+  const history = useHistory()
   const { userInfo } = useContext(userInfoContext)
   const [activity] = useState<Activity>(getActivityById(+id))
   const date = {
@@ -29,7 +30,12 @@ export const ActivityPage = () => {
       }>
         <Row>
           <Col className="d-flex">
-            <div className="ml-auto"><TrashIcon /></div>
+            <div className="ml-auto" onClick={
+              () => {
+                deleteActivity(+id)
+                history.push('/dashboard')
+              }
+            }><TrashIcon /></div>
             <div className="ml-4"><PenIcon /></div>
           </Col>
         </Row>
