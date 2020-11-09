@@ -5,10 +5,12 @@ interface ThemeContext {
   isActivityFormShow: boolean;
   isAddActivityFormShow: boolean;
   isUpdateActivityFormShow: boolean;
+  isSidebarShow: boolean;
   setIsUpdateActivityFormShow: (value: boolean) => void;
   setIsAddActivityFormShow: (value: boolean) => void;
   setIsBackdropShow: (value: boolean) => void;
   setIsActivityFormShow: (value: boolean) => void;
+  setIsSidebarShow: (value: boolean) => void;
   resetActivityFormShow: () => void;
 }
 
@@ -17,11 +19,13 @@ export const themeContext = React.createContext<ThemeContext>({
   isBackdropShow: false,
   isAddActivityFormShow: false,
   isUpdateActivityFormShow: false,
+  isSidebarShow: false,
   setIsActivityFormShow: () => { },
   setIsBackdropShow: () => { },
   resetActivityFormShow: () => { },
   setIsAddActivityFormShow: () => { },
-  setIsUpdateActivityFormShow: () => { }
+  setIsUpdateActivityFormShow: () => { },
+  setIsSidebarShow: () => { }
 })
 
 export const ThemeStore = ({children} : {children: ReactNode}) => {
@@ -41,6 +45,10 @@ export const ThemeStore = ({children} : {children: ReactNode}) => {
     (state: boolean, newState: boolean) => newState, false
   )
 
+  const [isSidebarShow, setIsSidebarShow] = useReducer(
+    (state: boolean, newState: boolean) => newState, false
+  )
+
   return (
     <themeContext.Provider value={
       {
@@ -48,15 +56,18 @@ export const ThemeStore = ({children} : {children: ReactNode}) => {
         isBackdropShow,
         isAddActivityFormShow,
         isUpdateActivityFormShow,
+        isSidebarShow,
         setIsActivityFormShow,
         setIsBackdropShow,
         setIsAddActivityFormShow,
         setIsUpdateActivityFormShow,
+        setIsSidebarShow,
         resetActivityFormShow: () => {
           setIsBackdropShow(false)
           setIsActivityFormShow(false)
           setIsAddActivityFormShow(false)
           setIsUpdateActivityFormShow(false)
+          setIsSidebarShow(false)
         }
       }
     }>
