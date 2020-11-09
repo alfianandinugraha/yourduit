@@ -7,10 +7,12 @@ import { activityContext } from '../Store/ActivityStore'
 import { BackgroundHero } from '../Style/Styled'
 
 export const ActivitiesPage = () => {
-  const { getAllActivitiesByDate } = useContext(activityContext)
+  const { getAllActivitiesByDate, getTotalNominal } = useContext(activityContext)
   
   const dateTo = useDate(new Date().getTime())
   const dateFrom = useDate(new Date(`${dateTo.getFullYear}-${dateTo.getMonth}-01`).getTime())
+
+  const { spending, income } = getTotalNominal(dateFrom.getTime, dateTo.getTime)
 
   return (
     <LayoutProtectedPage>
@@ -56,11 +58,15 @@ export const ActivitiesPage = () => {
           }>
             <div>
               <span>Spending</span>
-              <div className="text-danger"><b>Rp10000</b></div>
+              <div className="text-danger">
+                <b>Rp{spending}</b>
+              </div>
             </div>
             <div>
               <span>Income</span>
-              <div className="text-primary"><b>Rp10000</b></div>
+              <div className="text-primary">
+                <b>Rp{income}</b>
+              </div>
             </div>
           </div>
         </Col>
