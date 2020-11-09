@@ -38,6 +38,7 @@ interface ActivityContext {
   getActivityById: (id: number) => Activity;
   deleteActivity: (id: number) => void;
   updateActivity: (id: number, activity: Activity) => void;
+  getAllActivitiesByDate: (from: number, to: number) => Activity[]
 }
 
 const activityStoreInitialValue: ActivityContext = {
@@ -85,7 +86,8 @@ const activityStoreInitialValue: ActivityContext = {
   addActivity: () => { },
   getActivityById: () => defaultActivity,
   deleteActivity: () => { },
-  updateActivity: () => { }
+  updateActivity: () => { },
+  getAllActivitiesByDate: () => []
 }
 
 export const activityContext = React.createContext<ActivityContext>(activityStoreInitialValue)
@@ -147,6 +149,10 @@ const ActivityStore = (props: Props) => {
     return activities.filter((activity) => activity.id === id)[0]
   }
 
+  const getAllActivitiesByDate = (from: number, to: number) => {
+    return activities.filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to)
+  }
+
   const deleteActivity = (id: number) => {
     const index = activities.findIndex((activity) => activity.id === id)
     const newActivity = [...activities]
@@ -177,7 +183,8 @@ const ActivityStore = (props: Props) => {
         addActivity,
         getActivityById,
         deleteActivity,
-        updateActivity
+        updateActivity,
+        getAllActivitiesByDate
       }
     }>
       {props.children}
