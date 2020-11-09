@@ -33,9 +33,14 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
   const { resetActivityFormShow } = useContext(themeContext);
   const [valueDescription, setValueDescription] = useInputForm(props.activity?.description || "")
   const [valueNominal, setValueNominal] = useInputForm(props.activity?.nominal.toString() || "")
-  const [valueDate, setValueDate] = useState(0)
-
-  const { getDay, getMonth, getFullYear, setDate } = useDate(props.activity?.updatedAt || new Date().getTime())
+  const {
+    getDay,
+    getMonth,
+    getFullYear,
+    getTime,
+    setDate
+  } = useDate(props.activity?.updatedAt || new Date().getTime())
+  const [valueDate, setValueDate] = useState(getTime)
 
   const buttonTypeHandler = (type: "1" | "0") => {
     if (!props.getPayload) return

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const useDate = (timestamp: number = 0) => {
   const [date, setDate] = useState(() => {
