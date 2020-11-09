@@ -95,6 +95,7 @@ export const BackdropWrapper = styled.div`
   top: 0;
   left: 0;
   opacity: 0.55;
+  z-index: 10;
 `
 
 export const SpacingLayoutTop = styled.div`
@@ -105,4 +106,15 @@ export const TopRightElementPosition = styled(Container)`
   top: 24px;
   right: 0;
   position: absolute;
+  width: 50%;
+`
+
+export const SidebarWrapper = styled(Container)`
+  position: absolute;
+  background: white;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 80%;
 `
