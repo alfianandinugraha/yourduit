@@ -24,9 +24,11 @@ export const CashSummary = (props: Props) => {
             <Col className="d-flex">
               <div>
                 <div>Cash this month</div>
-                <div className="d-flex text-primary">
+                <div className={`d-flex text-primary text-${props.nominal < 0 ? 'danger' : 'primary'}`}>
                   <span>{location.currency}</span>
-                  <h1>{new Intl.NumberFormat(location.locale).format(props.nominal)}</h1>
+                  <h1>
+                    {new Intl.NumberFormat(location.locale).format(Math.abs(props.nominal))}
+                  </h1>
                 </div>
               </div>
               <div className="ml-auto">
