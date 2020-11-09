@@ -1,17 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import ActivityItem from '../Components/ActivityItem'
 import useDate from '../Hooks/useDate'
-import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
-import { Activity, activityContext } from '../Store/ActivityStore'
+import { activityContext } from '../Store/ActivityStore'
 import { BackgroundHero } from '../Style/Styled'
 
 export const ActivitiesPage = () => {
   const { getAllActivitiesByDate } = useContext(activityContext)
-
-  const [dateFromValue, setDateFromValue] = useInputForm("")
-  const [dateToValue, setDateToValue] = useInputForm("")
   
   const dateTo = useDate(new Date().getTime())
   const dateFrom = useDate(new Date(`${dateTo.getFullYear}-${dateTo.getMonth}-01`).getTime())
@@ -32,7 +28,6 @@ export const ActivitiesPage = () => {
             value={`${dateFrom.getFullYear}-${dateFrom.getMonth}-${dateFrom.getDay}`}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const datePicked = new Date(e.target.value).getTime()
-              setDateFromValue(e)
               dateFrom.setDate(datePicked)
             }}
           />
@@ -45,7 +40,6 @@ export const ActivitiesPage = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const datePicked = new Date(e.target.value).getTime()
               dateTo.setDate(datePicked)
-              setDateToValue(e)
             }}
           />
         </Col>
