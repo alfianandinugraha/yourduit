@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
+import useDate from '../Hooks/useDate'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
@@ -10,6 +11,9 @@ export const ActivitiesPage = () => {
 
   const [dateFromValue, setDateFromValue] = useInputForm("")
   const [dateToValue, setDateToValue] = useInputForm("")
+
+  const dateTo = useDate(new Date().getTime())
+  const dateFrom = useDate(new Date(`${dateTo.getFullYear}-${dateTo.getMonth}-01`).getTime())
 
   return (
     <LayoutProtectedPage>
@@ -22,11 +26,27 @@ export const ActivitiesPage = () => {
       <Row className="text-white mt-4">
         <Col className="col-6">
           <span>From</span>
-          <Form.Control type="date" onChange={setDateFromValue} />
+          <Form.Control
+            type="date"
+            value={`${dateFrom.getFullYear}-${dateFrom.getMonth}-${dateFrom.getDay}`}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const datePicked = new Date(e.target.value).getTime()
+              dateFrom.setDate(datePicked)
+              setDateFromValue(e)
+            }}
+          />
         </Col>
         <Col className="col-6">
           <span>To</span>
-          <Form.Control type="date" onChange={setDateToValue} />
+          <Form.Control
+            type="date"
+            value={`${dateTo.getFullYear}-${dateTo.getMonth}-${dateTo.getDay}`}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const datePicked = new Date(e.target.value).getTime()
+              dateTo.setDate(datePicked)
+              setDateToValue(e)
+            }}
+          />
         </Col>
       </Row>
       <Row className="mt-4">
