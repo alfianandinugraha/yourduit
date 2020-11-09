@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { ProtectedAuthRoute } from './Auth/ProtectedAuthRoute';
 import { ProtectedRoute } from './Auth/ProtectedRoute';
+import { ActivitiesPage } from './Pages/ActivitiesPage';
 import { ActivityPage } from './Pages/ActivityPage';
 import DashboardPage from './Pages/DashboardPage';
 import LoginPage from './Pages/LoginPage';
@@ -15,6 +16,11 @@ function App() {
           <Route path="/dashboard">
             <ProtectedRoute> 
               <DashboardPage />
+            </ProtectedRoute>
+          </Route>
+          <Route path="/activities">
+            <ProtectedRoute> 
+              <ActivitiesPage />
             </ProtectedRoute>
           </Route>
           <Route path="/activities/:id">
