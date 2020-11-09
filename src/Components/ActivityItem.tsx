@@ -8,11 +8,12 @@ const ActivityItem = (props: Activity) => {
   const [nominal] = useState<string>(new Intl.NumberFormat(userInfo.location.locale).format(props.nominal))
 
   return (
-    <Link className="d-flex mb-2" to={`/activities/${props.id.toString()}`}>
+    <Link
+      className={`d-flex mb-2 text-${props.type === "1" ? "primary" : "danger"}`}
+      to={`/activities/${props.id.toString()}`}
+    >
       <div>{props.description}</div>
-      <div
-        className={`ml-auto text-${props.type === "1" ? "primary" : "danger"}`}
-      >
+      <div className="ml-auto">
         {userInfo.location.currency}{nominal}
       </div>
     </Link>
