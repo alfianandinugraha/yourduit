@@ -1,4 +1,4 @@
-import { Row, Button } from 'react-bootstrap'
+import { Row, Button, Container } from 'react-bootstrap'
 import styled from 'styled-components'
 
 interface BackgroundHeroProps {
@@ -99,4 +99,10 @@ export const BackdropWrapper = styled.div`
 
 export const SpacingLayoutTop = styled.div`
   margin-top: 79px;
+`
+
+export const TopRightElementPosition = styled(Container)`
+  top: 24px;
+  right: 0;
+  position: absolute;
 `
