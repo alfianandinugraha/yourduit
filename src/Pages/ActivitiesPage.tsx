@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
+import ActivityItem from '../Components/ActivityItem'
 import useDate from '../Hooks/useDate'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
-import { activityContext } from '../Store/ActivityStore'
+import { Activity, activityContext } from '../Store/ActivityStore'
 import { BackgroundHero } from '../Style/Styled'
 
 export const ActivitiesPage = () => {
@@ -11,7 +12,7 @@ export const ActivitiesPage = () => {
 
   const [dateFromValue, setDateFromValue] = useInputForm("")
   const [dateToValue, setDateToValue] = useInputForm("")
-
+  
   const dateTo = useDate(new Date().getTime())
   const dateFrom = useDate(new Date(`${dateTo.getFullYear}-${dateTo.getMonth}-01`).getTime())
 
@@ -31,8 +32,8 @@ export const ActivitiesPage = () => {
             value={`${dateFrom.getFullYear}-${dateFrom.getMonth}-${dateFrom.getDay}`}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const datePicked = new Date(e.target.value).getTime()
-              dateFrom.setDate(datePicked)
               setDateFromValue(e)
+              dateFrom.setDate(datePicked)
             }}
           />
         </Col>
@@ -68,6 +69,14 @@ export const ActivitiesPage = () => {
               <div className="text-primary"><b>Rp10000</b></div>
             </div>
           </div>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col>
+          {
+            getAllActivitiesByDate(dateFrom.getTime, dateTo.getTime)
+              .map((val) => <ActivityItem {...val} key={val.id} />)  
+          }
         </Col>
       </Row>
     </LayoutProtectedPage>

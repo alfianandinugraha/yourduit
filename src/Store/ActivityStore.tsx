@@ -150,7 +150,8 @@ const ActivityStore = (props: Props) => {
   }
 
   const getAllActivitiesByDate = (from: number, to: number) => {
-    return activities.filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to)
+    const newActivities = [...activities].filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to + 86400000 - 1)
+    return newActivities
   }
 
   const deleteActivity = (id: number) => {
