@@ -107,7 +107,7 @@ const ActivityStore = (props: Props) => {
     let summary = 0;
 
     activities
-      .filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to)
+      .filter((activity) => activity.updatedAt >= from && activity.updatedAt <= to + 86400000 - 1)
       .forEach((activity) => {
         switch (activity.type) {
           case "1":
