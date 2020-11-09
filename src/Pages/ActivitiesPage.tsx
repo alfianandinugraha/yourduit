@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router'
+import { CalendarIcon } from '../Common/CalendarIcon'
 import ActivityItem from '../Components/ActivityItem'
 import useDate from '../Hooks/useDate'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
 import { userInfoContext } from '../Store/UserInfoContext'
-import { BackgroundHero } from '../Style/Styled'
+import { BackgroundHero, TopRightElementPosition } from '../Style/Styled'
 
 export const ActivitiesPage = () => {
   const { getAllActivitiesByDate, getTotalNominal } = useContext(activityContext)
@@ -21,7 +23,19 @@ export const ActivitiesPage = () => {
     return currency + new Intl.NumberFormat(locale).format(nominal)
   }
 
+  const history = useHistory()
+
   return (
+    <>
+      <TopRightElementPosition>
+        <Row>
+          <Col className="d-flex">
+            <div className="ml-auto" onClick={() => history.push('/activities')}>
+              <CalendarIcon />
+            </div>
+          </Col>
+        </Row>
+      </TopRightElementPosition>
     <LayoutProtectedPage>
       <BackgroundHero className="bg-primary w-100 position-absolute" height="311px" />
       <Row>
@@ -87,5 +101,6 @@ export const ActivitiesPage = () => {
         </Col>
       </Row>
     </LayoutProtectedPage>
+    </>
   )
 }
