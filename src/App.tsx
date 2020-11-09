@@ -18,7 +18,7 @@ function App() {
               <DashboardPage />
             </ProtectedRoute>
           </Route>
-          <Route path="/activities">
+          <Route exact path="/activities">
             <ProtectedRoute> 
               <ActivitiesPage />
             </ProtectedRoute>
