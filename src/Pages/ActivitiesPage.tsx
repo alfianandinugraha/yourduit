@@ -4,15 +4,22 @@ import ActivityItem from '../Components/ActivityItem'
 import useDate from '../Hooks/useDate'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
+import { userInfoContext } from '../Store/UserInfoContext'
 import { BackgroundHero } from '../Style/Styled'
 
 export const ActivitiesPage = () => {
   const { getAllActivitiesByDate, getTotalNominal } = useContext(activityContext)
+  const { userInfo } = useContext(userInfoContext)
   
   const dateTo = useDate(new Date().getTime())
   const dateFrom = useDate(new Date(`${dateTo.getFullYear}-${dateTo.getMonth}-01`).getTime())
 
   const { spending, income } = getTotalNominal(dateFrom.getTime, dateTo.getTime)
+  const { location } = userInfo
+
+  const getParsedCurrency = (currency: string, locale: string, nominal: number) => {
+    return currency + new Intl.NumberFormat(locale).format(nominal)
+  }
 
   return (
     <LayoutProtectedPage>
@@ -59,13 +66,13 @@ export const ActivitiesPage = () => {
             <div>
               <span>Spending</span>
               <div className="text-danger">
-                <b>Rp{spending}</b>
+                <b>{getParsedCurrency(location.currency, location.locale, spending)}</b>
               </div>
             </div>
             <div>
               <span>Income</span>
               <div className="text-primary">
-                <b>Rp{income}</b>
+                <b>{getParsedCurrency(location.currency, location.locale, income)}</b>
               </div>
             </div>
           </div>
