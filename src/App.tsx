@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Sidebar />
-      <Container className="position-absolute w-50" style={{ top: 24 }}>
+      <Container className="position-absolute w-50" style={{ top: 24, zIndex: 1 }}>
         <HamburgerIcon onClick={() => {
           setIsSidebarShow(true)
           setIsBackdropShow(true)
