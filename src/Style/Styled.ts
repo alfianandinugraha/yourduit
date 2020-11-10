@@ -125,3 +125,7 @@ export const SidebarHero = styled.div`
   left: 0;
   width: 100%;
 `
+
+export const SidebarHeader = styled(Row)`
+  margin-top: 80px;
+`

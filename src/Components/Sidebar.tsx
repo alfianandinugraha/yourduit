@@ -5,7 +5,7 @@ import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
 import { UserIcon } from '../Common/UserIcon'
 import { themeContext } from '../Store/ThemeStore'
-import { SidebarHero, SidebarWrapper } from '../Style/Styled'
+import { SidebarHeader, SidebarHero, SidebarWrapper } from '../Style/Styled'
 import { Backdrop } from './Backdrop'
 
 export const Sidebar = () => {
@@ -20,11 +20,7 @@ export const Sidebar = () => {
           <>
             <SidebarWrapper>
               <SidebarHero className="bg-primary position-absolute"/>
-              <Row style={
-                {
-                  marginTop: '80px'
-                }
-              }>
+              <SidebarHeader>
                 <Col>
                   <h1 className="text-white" style={
                     {
@@ -33,7 +29,7 @@ export const Sidebar = () => {
                     }
                   }>yourDuit</h1>
                 </Col>
-              </Row>
+              </SidebarHeader>
               <Row style={{ marginTop: '2.5rem'}}>
                 <Col className="col-12">
                   <Link to="/dashboard" style={{color: '#747474'}} onClick={hideSidebar}>
