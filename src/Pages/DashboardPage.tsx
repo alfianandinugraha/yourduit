@@ -33,7 +33,7 @@ const DashboardPage = () => {
           <span>Welcome,</span>
         </Col>
         <Col sm="12">
-            <h1 style={{maxHeight: '56px', overflow: 'hidden'}}>{userInfo.name}</h1>
+          <h1 style={{maxHeight: '56px', overflow: 'hidden'}}>{userInfo.name}</h1>
         </Col>
       </GreetingDashboard>
       <Row>
