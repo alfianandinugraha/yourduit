@@ -3,6 +3,7 @@ import { Col, Form, Row } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import ActivityItem from '../Components/ActivityItem'
+import { LiquidBackground } from '../Components/LiquidBackground'
 import useDate from '../Hooks/useDate'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
@@ -27,6 +28,7 @@ export const ActivitiesPage = () => {
 
   return (
     <>
+      <LiquidBackground top="-267.06" left="32%"/>
       <TopRightElementPosition>
         <Row>
           <Col className="d-flex">
