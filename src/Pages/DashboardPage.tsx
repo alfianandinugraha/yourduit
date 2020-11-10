@@ -6,10 +6,12 @@ import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
+import { userInfoContext } from '../Store/UserInfoContext'
 import { BackgroundHero, GreetingDashboard, ListActivityDashboard, TopRightElementPosition } from '../Style/Styled'
 
 const DashboardPage = () => {
   const { activities, getTotalNominalThisMonth } = useContext(activityContext)
+  const { userInfo } = useContext(userInfoContext)
   const { income, spending } = getTotalNominalThisMonth()
   const history = useHistory()
 
@@ -31,7 +33,7 @@ const DashboardPage = () => {
           <span>Welcome,</span>
         </Col>
         <Col sm="12">
-          <h1>Alfian Andi</h1>
+            <h1 style={{maxHeight: '56px', overflow: 'hidden'}}>{userInfo.name}</h1>
         </Col>
       </GreetingDashboard>
       <Row>
