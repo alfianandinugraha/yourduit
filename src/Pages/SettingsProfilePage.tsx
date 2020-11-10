@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import { LiquidBackground } from '../Components/LiquidBackground'
 import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
@@ -15,6 +16,7 @@ export const SettingsProfilePage = () => {
 
   return (
     <>
+      <LiquidBackground top="-267.06" left="32%" />
       <BackgroundHero className="bg-primary w-100 position-absolute" height="402px"/>
       <LayoutProtectedPage disableCashSummary={true} style={{ marginBottom: '3rem' }}>
         <h1 className="text-white">Settings</h1>
