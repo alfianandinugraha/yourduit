@@ -12,6 +12,15 @@ export const Sidebar = () => {
         !isSidebarShow ? null : (
           <>
             <SidebarWrapper>
+              <div className="bg-primary position-absolute" style={
+                {
+                  height: '142px',
+                  zIndex: 1000,
+                  top: 0,
+                  left: 0,
+                  width: '100%'
+                }
+              }></div>
             </SidebarWrapper>
             <Backdrop onClick={() => resetActivityFormShow()}/>
           </>
