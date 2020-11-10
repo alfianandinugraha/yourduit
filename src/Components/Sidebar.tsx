@@ -45,7 +45,7 @@ export const Sidebar = () => {
       {
         !isSidebarShow ? null : (
           <>
-            <Container className="position-absolute w-50" style={{ top: 24, zIndex: 1000 }}>
+            <Container className="position-fixed w-50" style={{ top: 24, zIndex: 1000 }}>
               <HamburgerIcon onClick={hideSidebar} />
             </Container>
             <SidebarWrapper>

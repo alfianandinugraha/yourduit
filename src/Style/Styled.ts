@@ -110,7 +110,7 @@ export const TopRightElementPosition = styled(Container)`
 `
 
 export const SidebarWrapper = styled(Container)`
-  position: absolute;
+  position: fixed;
   background: white;
   height: 100%;
   left: 0;
