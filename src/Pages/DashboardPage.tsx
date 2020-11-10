@@ -19,7 +19,7 @@ const DashboardPage = () => {
         <Row>
           <Col className="d-flex">
             <div className="ml-auto" onClick={() => history.push('/activities')}>
-              <CalendarIcon />
+              <CalendarIcon fill="white"/>
             </div>
           </Col>
         </Row>
