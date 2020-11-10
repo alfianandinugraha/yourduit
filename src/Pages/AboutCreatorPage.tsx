@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
-import { BackgroundHero } from '../Style/Styled'
+import { AboutCreatorBio, AboutCreatorContactWrapper, BackgroundHero, AboutCreatorGreeting} from '../Style/Styled'
 
 export const AboutCreatorPage = () => {
   return (
@@ -30,6 +30,23 @@ export const AboutCreatorPage = () => {
             </div>
           </Col>
         </Row>
+        <AboutCreatorGreeting>
+          <Col>
+            <h4 className="text-center">Hello everyone !!!</h4>
+          </Col>
+        </AboutCreatorGreeting>
+        <Row>
+          <Col>
+            <AboutCreatorBio>
+              My name is Alfian Andi Nugraha, I'm a web developer based on Indonesia. I love any thing about Javascript world, if you have any question or feedback feel free to contact me
+            </AboutCreatorBio>
+          </Col>
+        </Row>
+        <AboutCreatorContactWrapper>
+          <Col className="text-center">
+            <a href="https://linktr.ee/alfianandinugraha" target="_blank" rel="noreferrer">https://linktr.ee/alfianandinugraha</a>
+          </Col>
+        </AboutCreatorContactWrapper>
       </LayoutProtectedPage>
     </>
   )

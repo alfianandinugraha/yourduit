@@ -133,3 +133,20 @@ export const SidebarHeader = styled(Row)`
 export const SidebarLinkContainer = styled(Row)`
   margin-top: 2.5rem;
 `
+
+export const AboutCreatorGreeting = styled(Row)`
+  margin-top: 20px;
+
+  h4 {
+    font-weight: 800;
+  }
+`
+
+export const AboutCreatorBio = styled.div`
+  text-align: center;
+  line-height: 2rem;
+`
+
+export const AboutCreatorContactWrapper = styled(Row)`
+  margin-top: 20px;
+`
