@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useHistory } from 'react-router'
 import { CalendarIcon } from '../Common/CalendarIcon'
-import { Liquid1 } from '../Common/Liquid1'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
+import { LiquidBackground } from '../Components/LiquidBackground'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { activityContext } from '../Store/ActivityStore'
 import { userInfoContext } from '../Store/UserInfoContext'
@@ -18,13 +18,8 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Liquid1 style={
-        {
-          position: "absolute",
-          left: "54%",
-          top: "-24.06px"
-        }
-      }/>
+      <LiquidBackground left="-378.64px" top="-57.06px" />
+      <LiquidBackground left="54%" top="-24.06px" />
       <TopRightElementPosition>
         <Row>
           <Col className="d-flex">
