@@ -7,6 +7,7 @@ interface Props {
   bottom?: string;
   right?: string;
   rotate?: string;
+  zIndex?: number;
 }
 
 export const LiquidBackground = (props: Props) => {
