@@ -17,4 +17,9 @@ svg {
   cursor: pointer;
 }
 
+#root {
+  overflow-x: hidden;
+  position: relative;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
