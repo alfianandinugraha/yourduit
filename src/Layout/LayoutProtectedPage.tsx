@@ -5,7 +5,8 @@ import { activityContext } from '../Store/ActivityStore'
 import { SpacingLayoutTop } from '../Style/Styled';
 
 interface Props {
-  children: ReactNode
+  children: ReactNode;
+  disableCashSummary?: boolean;
 }
 
 export const LayoutProtectedPage = (props: Props) => {
@@ -17,7 +18,7 @@ export const LayoutProtectedPage = (props: Props) => {
       <Container>
         <SpacingLayoutTop />
         {props.children}
-        <CashSummary nominal={summary} />
+        {!props.disableCashSummary ? (<CashSummary nominal={summary} />) : null}
       </Container> 
     </>
   )
