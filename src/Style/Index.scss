@@ -13,4 +13,8 @@ $theme-colors: ("primary":#158467, "danger": #f05454);
   cursor: pointer;
 }
 
+svg {
+  cursor: pointer;
+}
+
 @import '~bootstrap/scss/bootstrap.scss';
