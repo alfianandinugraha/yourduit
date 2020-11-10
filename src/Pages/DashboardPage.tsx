@@ -37,10 +37,10 @@ const DashboardPage = () => {
         </Col>
       </GreetingDashboard>
       <Row>
-        <Col md="6">
+        <Col className="col-12">
           <CashBoard nominal={spending} text="Spending this month" color="danger"/>
         </Col>
-        <Col md="6">
+        <Col className="col-12">
           <CashBoard nominal={income} text="Income this month" color="primary"/>
         </Col>
       </Row>
