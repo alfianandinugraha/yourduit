@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Button, Col, Form, Row } from 'react-bootstrap'
+import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { listLocation, LocationCurrency, userInfoContext } from '../Store/UserInfoContext'
 import { BackgroundHero } from '../Style/Styled'
 
 export const SettingsProfilePage = () => {
-  const { userInfo } = useContext(userInfoContext)
+  const { userInfo, setUserInfo } = useContext(userInfoContext)
   const { name, location } = userInfo
 
   const [inputName, setInputName] = useInputForm(name)
@@ -44,7 +45,19 @@ export const SettingsProfilePage = () => {
           }
         }>
           <Col>
-            <Button variant="primary w-100">Save</Button>
+            <Button
+              variant="primary w-100"
+              onClick={() => {
+                saveUserToLocalStorage(inputName, inputLocale)
+                setUserInfo({
+                  name: inputName,
+                  location: {
+                    locale: inputLocale,
+                    currency: listLocation.filter((val) => val.locale === inputLocale)[0].currency
+                  }
+                })
+              }}
+            >Save</Button>
           </Col>
         </Row>
       </LayoutProtectedPage>
