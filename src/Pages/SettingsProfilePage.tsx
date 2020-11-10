@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Button, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
@@ -38,28 +38,31 @@ export const SettingsProfilePage = () => {
             </Form.Control>
           </Col>
         </Row>
-        <Row className="position-fixed" style={
+        <Container className="position-fixed" style={
           {
             width: '100%',
-            bottom: '1rem'
+            bottom: '1rem',
+            marginLeft: '-15px'
           }
         }>
-          <Col>
-            <Button
-              variant="primary w-100"
-              onClick={() => {
-                saveUserToLocalStorage(inputName, inputLocale)
-                setUserInfo({
-                  name: inputName,
-                  location: {
-                    locale: inputLocale,
-                    currency: listLocation.filter((val) => val.locale === inputLocale)[0].currency
-                  }
-                })
-              }}
-            >Save</Button>
-          </Col>
-        </Row>
+          <Row>
+            <Col className="col-12">
+              <Button
+                variant="primary w-100"
+                onClick={() => {
+                  saveUserToLocalStorage(inputName, inputLocale)
+                  setUserInfo({
+                    name: inputName,
+                    location: {
+                      locale: inputLocale,
+                      currency: listLocation.filter((val) => val.locale === inputLocale)[0].currency
+                    }
+                  })
+                }}
+              >Save</Button>
+            </Col>
+          </Row>
+        </Container>
       </LayoutProtectedPage>
     </>
   )
