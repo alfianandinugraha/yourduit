@@ -3,6 +3,7 @@ import { Col, Row, Container } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router'
 import { PenIcon } from '../Common/PenIcon'
 import { TrashIcon } from '../Common/TrashIcon'
+import { LiquidBackground } from '../Components/LiquidBackground'
 import { UpdateActivityForm } from '../Components/UpdateActivityForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { Activity, activityContext } from '../Store/ActivityStore'
@@ -29,6 +30,7 @@ export const ActivityPage = () => {
 
   return (
     <>
+      <LiquidBackground top="-267.06" left="32%" />
       <LayoutProtectedPage>
       <Container className="position-absolute" style={
         {
