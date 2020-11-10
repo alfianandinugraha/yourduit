@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Col, Row } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
