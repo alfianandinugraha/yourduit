@@ -66,7 +66,7 @@ export const Sidebar = () => {
                 }
                 <Col className={`col-12 position-absolute mt-${!isLoggedIn ? '0' : '4'}`} style={{bottom: '1rem'}}>
                   <Link className="w-100" to="/creator">
-                    <Button variant="primary w-100">
+                    <Button variant="primary w-100" onClick={hideSidebar}>
                       <UserIcon style={{marginRight: '1rem'}} fill="white"/>
                       <span>About Creator</span>
                     </Button>
