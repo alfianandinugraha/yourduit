@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import { Col } from 'react-bootstrap'
+import { Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
+import { HamburgerIcon } from '../Common/HamburgerIcon'
 import { UserIcon } from '../Common/UserIcon'
 import { authContext } from '../Store/AuthStore'
 import { themeContext } from '../Store/ThemeStore'
@@ -37,6 +38,9 @@ export const Sidebar = () => {
       {
         !isSidebarShow ? null : (
           <>
+            <Container className="position-absolute w-50" style={{ top: 24, zIndex: 1000 }}>
+              <HamburgerIcon onClick={hideSidebar} />
+            </Container>
             <SidebarWrapper>
               <SidebarHero className="bg-primary position-absolute"/>
               <SidebarHeader>
