@@ -5,6 +5,7 @@ import { ProtectedAuthRoute } from './Auth/ProtectedAuthRoute';
 import { ProtectedRoute } from './Auth/ProtectedRoute';
 import { HamburgerIcon } from './Common/HamburgerIcon';
 import { Sidebar } from './Components/Sidebar';
+import { AboutCreatorPage } from './Pages/AboutCreatorPage';
 import { ActivitiesPage } from './Pages/ActivitiesPage';
 import { ActivityPage } from './Pages/ActivityPage';
 import DashboardPage from './Pages/DashboardPage';
@@ -38,6 +39,11 @@ function App() {
         <Route exact path="/settings">
           <ProtectedRoute> 
             <SettingsProfilePage />
+          </ProtectedRoute>
+        </Route>
+        <Route exact path="/creator">
+          <ProtectedRoute> 
+            <AboutCreatorPage />
           </ProtectedRoute>
         </Route>
         <Route path="/activities/:id">
