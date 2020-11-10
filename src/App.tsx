@@ -9,6 +9,7 @@ import { ActivitiesPage } from './Pages/ActivitiesPage';
 import { ActivityPage } from './Pages/ActivityPage';
 import DashboardPage from './Pages/DashboardPage';
 import LoginPage from './Pages/LoginPage';
+import { SettingsProfilePage } from './Pages/SettingsProfilePage';
 import { themeContext } from './Store/ThemeStore';
 
 function App() {
@@ -32,6 +33,11 @@ function App() {
         <Route exact path="/activities">
           <ProtectedRoute> 
             <ActivitiesPage />
+          </ProtectedRoute>
+        </Route>
+        <Route exact path="/settings">
+          <ProtectedRoute> 
+            <SettingsProfilePage />
           </ProtectedRoute>
         </Route>
         <Route path="/activities/:id">
