@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Col, Container } from 'react-bootstrap'
+import { Button, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
@@ -64,9 +64,13 @@ export const Sidebar = () => {
                 {
                   !isLoggedIn ? null : protectedNavigation
                 }
-                <Col className={`col-12 mt-${!isLoggedIn ? '0' : '4'}`}>
-                  <UserIcon style={{marginRight: '1rem'}}/>
-                  <span>About Creator</span>
+                <Col className={`col-12 position-absolute mt-${!isLoggedIn ? '0' : '4'}`} style={{bottom: '1rem'}}>
+                  <Link className="w-100" to="/creator">
+                    <Button variant="primary w-100">
+                      <UserIcon style={{marginRight: '1rem'}} fill="white"/>
+                      <span>About Creator</span>
+                    </Button>
+                  </Link>
                 </Col>
               </SidebarLinkContainer>
             </SidebarWrapper>
