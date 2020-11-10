@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 import useInputForm from '../Hooks/useInputForm'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { listLocation, LocationCurrency, userInfoContext } from '../Store/UserInfoContext'
@@ -35,6 +35,16 @@ export const SettingsProfilePage = () => {
                 })
               }
             </Form.Control>
+          </Col>
+        </Row>
+        <Row className="position-fixed" style={
+          {
+            width: '100%',
+            bottom: '1rem'
+          }
+        }>
+          <Col>
+            <Button variant="primary w-100">Save</Button>
           </Col>
         </Row>
       </LayoutProtectedPage>
