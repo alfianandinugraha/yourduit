@@ -16,7 +16,7 @@ export const SettingsProfilePage = () => {
   return (
     <>
       <BackgroundHero className="bg-primary w-100 position-absolute" height="402px"/>
-      <LayoutProtectedPage disableCashSummary={true}>
+      <LayoutProtectedPage disableCashSummary={true} style={{ marginBottom: '3rem' }}>
         <h1 className="text-white">Settings</h1>
         <Row className="text-white">
           <Col className="col-12" style={{marginTop: '33px'}}>
