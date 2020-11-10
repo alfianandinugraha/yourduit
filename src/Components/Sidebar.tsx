@@ -11,6 +11,8 @@ import { Backdrop } from './Backdrop'
 export const Sidebar = () => {
   const { isSidebarShow, resetActivityFormShow } = useContext(themeContext)
 
+  const hideSidebar = () => resetActivityFormShow()
+
   return (
     <>
       {
@@ -41,13 +43,13 @@ export const Sidebar = () => {
               </Row>
               <Row style={{ marginTop: '2.5rem'}}>
                 <Col className="col-12">
-                  <Link to="/dashboard" style={{color: '#747474'}}>
+                  <Link to="/dashboard" style={{color: '#747474'}} onClick={hideSidebar}>
                     <DollarIcon style={{marginRight: '1rem'}}/>
                     <span>Dashboard</span>
                   </Link>
                 </Col>
                 <Col className="col-12 mt-4">
-                  <Link to="/activities" style={{color: '#747474'}}>
+                  <Link to="/activities" style={{color: '#747474'}} onClick={hideSidebar}>
                     <CalendarIcon style={{ marginRight: '1rem' }} fill="#747474" height="20.2" width="18.23"/>
                     <span>Calendar</span>
                   </Link>
