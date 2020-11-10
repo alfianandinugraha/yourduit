@@ -118,3 +118,10 @@ export const SidebarWrapper = styled(Container)`
   z-index: 999;
   width: 80%;
 `
+
+export const SidebarHero = styled.div`
+  height: 142px;
+  top: 0;
+  left: 0;
+  width: 100%;
+`

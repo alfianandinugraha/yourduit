@@ -5,7 +5,7 @@ import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
 import { UserIcon } from '../Common/UserIcon'
 import { themeContext } from '../Store/ThemeStore'
-import { SidebarWrapper } from '../Style/Styled'
+import { SidebarHero, SidebarWrapper } from '../Style/Styled'
 import { Backdrop } from './Backdrop'
 
 export const Sidebar = () => {
@@ -19,14 +19,7 @@ export const Sidebar = () => {
         !isSidebarShow ? null : (
           <>
             <SidebarWrapper>
-              <div className="bg-primary position-absolute" style={
-                {
-                  height: '142px',
-                  top: 0,
-                  left: 0,
-                  width: '100%'
-                }
-              }></div>
+              <SidebarHero className="bg-primary position-absolute"/>
               <Row style={
                 {
                   marginTop: '80px'
