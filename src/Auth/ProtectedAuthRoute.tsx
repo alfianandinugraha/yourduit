@@ -10,7 +10,7 @@ export const ProtectedAuthRoute = ({children}: Props) => {
   const { isLoggedIn } = useContext(authContext)
 
   return (
-    <div>
+    <div style={{position: 'relative', overflow: 'hidden'}}>
       <>
         {
           isLoggedIn ? <Redirect to="/dashboard" /> : (children)
