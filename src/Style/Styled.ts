@@ -129,3 +129,7 @@ export const SidebarHero = styled.div`
 export const SidebarHeader = styled(Row)`
   margin-top: 80px;
 `
+
+export const SidebarLinkContainer = styled(Row)`
+  margin-top: 2.5rem;
+`
