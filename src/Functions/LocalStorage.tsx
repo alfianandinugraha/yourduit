@@ -63,3 +63,16 @@ export const deleteActivityFromLocalStorage = (id: number) => {
   const key = `${prefix}${separator}activity${separator}${id}`
   localStorage.removeItem(key)
 }
+
+export const saveUserToLocalStorage = (name: string, locale: string) => {
+  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR;
+
+  localStorage.setItem(
+    `${LOCAL_STORAGE_PREFIX}${separator}user${separator}name`,
+    name
+  )
+  localStorage.setItem(
+    `${LOCAL_STORAGE_PREFIX}${separator}user${separator}locale`,
+    locale
+  )
+}
