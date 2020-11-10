@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
 import { HamburgerIcon } from '../Common/HamburgerIcon'
+import { SettingIcon } from '../Common/SettingIcon'
 import { UserIcon } from '../Common/UserIcon'
 import { authContext } from '../Store/AuthStore'
 import { themeContext } from '../Store/ThemeStore'
@@ -28,6 +29,12 @@ export const Sidebar = () => {
         <Link to="/activities" style={{ color: '#747474' }} onClick={hideSidebar}>
           <CalendarIcon style={{ marginRight: '1rem' }} fill="#747474" height="20.2" width="18.23" />
           <span>Calendar</span>
+        </Link>
+      </Col>
+      <Col className="col-12 mt-4">
+        <Link to="/settings" style={{ color: '#747474' }} onClick={hideSidebar}>
+          <SettingIcon style={{ marginRight: '1rem' }} fill="#747474" height="20.2" width="18.23" />
+          <span>Settings Profile</span>
         </Link>
       </Col>
     </>
