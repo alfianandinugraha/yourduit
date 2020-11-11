@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import { Alert } from '../Components/Alert'
 import { LiquidBackground } from '../Components/LiquidBackground'
 import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
@@ -14,8 +15,20 @@ export const SettingsProfilePage = () => {
   const [inputName, setInputName] = useInputForm(name)
   const [inputLocale, setInputLocale] = useInputForm(location.locale)
 
+  const [isAlertShow, setIsAlertShow] = useState(false)
+  const [alertMessage, setAlertMessage] = useState("")
+  const [alertVariant, setAlertVariant] = useState<"primary"|"danger">("danger")
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!isAlertShow) return
+      setIsAlertShow(false)
+    }, 2000)
+  }, [isAlertShow, setIsAlertShow])
+
   return (
     <>
+      <Alert message={alertMessage} isShow={isAlertShow} variant={alertVariant}/>
       <LiquidBackground top="-267.06" left="32%" />
       <BackgroundHero className="bg-primary w-100 position-absolute" height="402px"/>
       <LayoutProtectedPage disableCashSummary={true} style={{ marginBottom: '3rem' }}>
@@ -52,6 +65,13 @@ export const SettingsProfilePage = () => {
               <Button
                 variant="primary w-100"
                 onClick={() => {
+                  if (!inputName || !inputLocale) {
+                    setIsAlertShow(true)
+                    setAlertMessage("Please fill the form")
+                    setAlertVariant("danger")
+                    return
+                  }
+
                   saveUserToLocalStorage(inputName, inputLocale)
                   setUserInfo({
                     name: inputName,
@@ -60,6 +80,13 @@ export const SettingsProfilePage = () => {
                       currency: listLocation.filter((val) => val.locale === inputLocale)[0].currency
                     }
                   })
+
+                  if (inputName !== name || inputLocale !== location.locale) {
+                    setIsAlertShow(true)
+                    setAlertMessage("Profile updated")
+                    setAlertVariant("primary")
+                  }
+
                 }}
               >Save</Button>
             </Col>
