@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { Alert } from '../Components/Alert'
 import { LiquidBackground } from '../Components/LiquidBackground'
 import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
@@ -15,10 +16,15 @@ const LoginPage = () => {
   const [inputName, setInputName] = useInputForm()
   const [inputCurrency, setInputCurrency] = useInputForm(listLocation[0].locale)
 
+  const [isAlertShow, setIsAlertShow] = useState<boolean>(false)
+
+  const history = useHistory()
+
   return (
     <>
     <LiquidBackground zIndex={1} left="-100px" top="-200px"/>
-    <LiquidBackground zIndex={1} left="-100px" bottom="-200px"/>
+    <LiquidBackground zIndex={1} left="-100px" bottom="-200px" />
+    <Alert message="please fill the form" isShow={isAlertShow} variant="danger"/>
     <div
       className="bg-primary w-100 d-flex text-white position-relative justify-content-center"
       style={{ height: '100vh' }}
@@ -60,11 +66,18 @@ const LoginPage = () => {
       <Container className="position-absolute p-0" style={{bottom: '16px', zIndex: 2}}>
         <Row className="w-100 m-auto">
           <Col sm="12">
-            <Link to="/dashboard">
               <WhiteButton
                 className="text-primary w-100 m-auto"
                 onClick={
                   () => {
+                    if (!inputName || !inputCurrency) {
+                      setIsAlertShow(true)
+                      setTimeout(() => {
+                        setIsAlertShow(false)
+                      }, 3000)
+                      return
+                    } 
+
                     saveUserToLocalStorage(inputName, inputCurrency)
                     setUserInfo({
                       name: inputName,
@@ -74,10 +87,10 @@ const LoginPage = () => {
                       }
                     })
                     setLoggedIn(true)
+                    history.push('/dashboard')
                   }
                 }
               >Next</WhiteButton>
-            </Link>
           </Col>
         </Row>
       </Container>
