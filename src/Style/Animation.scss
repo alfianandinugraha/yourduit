@@ -45,3 +45,27 @@
     }
   }
 }
+
+.activity-form-slide {
+  &-enter {
+    bottom: -83% !important;
+
+    &-active {
+      bottom: 0 !important;
+      transition: 500ms;
+    }
+
+    &-done {
+      bottom: 0 !important;
+    }
+  }
+
+  &-exit {
+    bottom: 0 !important;
+
+    &-active {
+      bottom: -83% !important;
+      transition: 500ms;
+    }
+  }
+}
