@@ -21,3 +21,27 @@
     }
   }
 }
+
+.sidebar-slide {
+  &-enter {
+    left: -80% !important;
+
+    &-active {
+      left: 0 !important;
+      transition: 500ms;
+    }
+
+    &-done {
+      left: 0 !important;
+    }
+  }
+
+  &-exit {
+    left: 0 !important;
+
+    &-active {
+      left: -80% !important;
+      transition: 500ms;
+    }
+  }
+}

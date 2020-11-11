@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Button, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { CSSTransition } from 'react-transition-group'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
 import { HamburgerIcon } from '../Common/HamburgerIcon'
@@ -41,41 +42,37 @@ export const Sidebar = () => {
 
   return (
     <>
-      {
-        !isSidebarShow ? null : (
-          <>
-            <Container className="position-fixed w-50" style={{ top: 24, zIndex: 1000 }}>
-              <HamburgerIcon onClick={hideSidebar} />
-            </Container>
-            <SidebarWrapper>
-              <SidebarHero className="bg-primary position-absolute"/>
-              <SidebarHeader>
-                <Col>
-                  <h1 className="text-white" style={
-                    {
-                      fontSize: '35px',
-                      fontWeight: 800
-                    }
-                  }>yourDuit</h1>
-                </Col>
-              </SidebarHeader>
-              <SidebarLinkContainer>
+      <CSSTransition in={isSidebarShow} timeout={500} classNames="sidebar-slide" unmountOnExit>
+        <SidebarWrapper>
+          <Container className="position-fixed w-50" style={{ top: 24, zIndex: 1000, marginLeft:"-15px" }}>
+            <HamburgerIcon onClick={hideSidebar} />
+          </Container>
+          <SidebarHero className="bg-primary position-absolute"/>
+          <SidebarHeader>
+            <Col>
+              <h1 className="text-white" style={
                 {
-                  !isLoggedIn ? null : protectedNavigation
+                  fontSize: '35px',
+                  fontWeight: 800
                 }
-                <Col className={`col-12 position-absolute mt-${!isLoggedIn ? '0' : '4'}`} style={{bottom: '1rem'}}>
-                  <Link className="w-100" to="/creator">
-                    <Button variant="primary w-100" onClick={hideSidebar}>
-                      <UserIcon style={{marginRight: '1rem'}} fill="white"/>
-                      <span>About Creator</span>
-                    </Button>
-                  </Link>
-                </Col>
-              </SidebarLinkContainer>
-            </SidebarWrapper>
-          </>
-        )
-      }
+              }>yourDuit</h1>
+            </Col>
+          </SidebarHeader>
+          <SidebarLinkContainer>
+            {
+              !isLoggedIn ? null : protectedNavigation
+            }
+            <Col className={`col-12 position-absolute mt-${!isLoggedIn ? '0' : '4'}`} style={{bottom: '1rem'}}>
+              <Link className="w-100" to="/creator">
+                <Button variant="primary w-100" onClick={hideSidebar}>
+                  <UserIcon style={{marginRight: '1rem'}} fill="white"/>
+                  <span>About Creator</span>
+                </Button>
+              </Link>
+            </Col>
+          </SidebarLinkContainer>
+        </SidebarWrapper>
+      </CSSTransition>
     </>
   )
 }
