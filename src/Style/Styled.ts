@@ -150,3 +150,26 @@ export const AboutCreatorBio = styled.div`
 export const AboutCreatorContactWrapper = styled(Row)`
   margin-top: 20px;
 `
+
+export const AlertWrapper = styled(Container)`
+  position: absolute;
+  top: 1rem;
+  z-index: 9999;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  .alert-content {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 0px rgba(00,00,00,0.16);
+  }
+
+  .alert-border {
+    position: absolute;
+    left: 15px;
+    width: 9px;
+    height: 100%;
+    border-radius: 5px 0 0 5px;
+  }
+`
