@@ -5,6 +5,7 @@ import { HashRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 
 import './Style/Index.scss'
+import './Style/Animation.scss'
 import { Store } from './Store/Store';
 
 ReactDOM.render(
