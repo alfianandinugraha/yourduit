@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import ActivityItem from '../Components/ActivityItem'
 import { CashBoard } from '../Components/CashBoard'
@@ -52,9 +53,12 @@ const DashboardPage = () => {
           <div><b>Recent Activity</b></div>
           <div className="mt-3">
             {
-              activities.map((val) => <ActivityItem {...val} key={val.id}/>)
+              activities.slice(0, 3).map((val) => <ActivityItem {...val} key={val.id}/>)
             }
-          </div>
+            </div>
+            <div className="text-center">
+              <Link to="/activities">See all activities</Link>
+            </div>
         </Col>
       </ListActivityDashboard>
     </LayoutProtectedPage>
