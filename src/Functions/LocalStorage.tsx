@@ -1,7 +1,6 @@
 import { Activity } from '../Store/ActivityStore';
 import {
   LOCAL_STORAGE_ACTIVITY_KEY_PREFIX,
-  LOCAL_STORAGE_PREFIX,
   LOCAL_STORAGE_SEPARATOR,
   LOCAL_STORAGE_USER_KEY_PREFIX
 } from '../utils/Prefix'
@@ -48,21 +47,10 @@ export const fetchAllActivityFromLocalStorage = () => {
 }
 
 export const fetchUserInfoFromLocalStorage = () => {
-  const keyUser = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_SEPARATOR + 'user';
-  const result: any = {}
-
-  for (let index = 0; index < localStorage.length; index++) {
-    const element = localStorage.key(index);
-    if (element?.startsWith(keyUser)) { 
-      if (element === keyUser + LOCAL_STORAGE_SEPARATOR + "name") {
-        result.name = localStorage.getItem(element)
-      } else if (element === keyUser + LOCAL_STORAGE_SEPARATOR + "locale") {
-        result.locale = localStorage.getItem(element)
-      }
-    }
+  return {
+    name: localStorage.getItem(LOCAL_STORAGE_USER_NAME_KEY),
+    locale: localStorage.getItem(LOCAL_STORAGE_USER_LOCALE_KEY)
   }
-
-  return result
 }
 
 export const deleteActivityFromLocalStorage = (id: number) => {
