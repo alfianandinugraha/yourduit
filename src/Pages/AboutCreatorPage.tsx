@@ -1,11 +1,13 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
+import { LiquidBackground } from '../Components/LiquidBackground'
 import { LayoutProtectedPage } from '../Layout/LayoutProtectedPage'
 import { AboutCreatorBio, AboutCreatorContactWrapper, BackgroundHero, AboutCreatorGreeting} from '../Style/Styled'
 
 export const AboutCreatorPage = () => {
   return (
     <>
+      <LiquidBackground top="-267.06" left="32%" />
       <BackgroundHero className="bg-primary w-100 position-absolute" height="232px" />
       <LayoutProtectedPage disableCashSummary={true}>
         <Row>
