@@ -21,7 +21,7 @@ function App() {
     <>
       <Backdrop onClick={() => resetActivityFormShow() }/>
       <Sidebar />
-      <Container className="position-absolute w-50" style={{ top: 24, zIndex: 500 }}>
+      <Container className="position-absolute w-50" style={{ top: 24, zIndex: 5 }}>
         <HamburgerIcon onClick={() => {
           setIsSidebarShow(true)
           setIsBackdropShow(true)
