@@ -1,8 +1,8 @@
 import { Activity } from '../Store/ActivityStore';
-import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_ACTIVITY_SEPARATOR } from '../utils/Prefix'
+import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
 
 export const saveActivityToLocalStorage = (activity: Activity) => {
-  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR;
+  const separator = LOCAL_STORAGE_SEPARATOR;
 
   localStorage.setItem(
     `${LOCAL_STORAGE_PREFIX}${separator}activity${separator}${activity.id}`,
@@ -11,14 +11,14 @@ export const saveActivityToLocalStorage = (activity: Activity) => {
 }
 
 export const fetchAllActivityFromLocalStorage = () => {
-  const keyActivity = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_ACTIVITY_SEPARATOR + 'activity';
+  const keyActivity = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_SEPARATOR + 'activity';
   const activities: Activity[] = []
 
   for (let index = 0; index < localStorage.length; index++) {
     const element = localStorage.key(index)
     
     if (element?.startsWith(keyActivity)) {
-      const [id, description, nominal, type, createdAt, updatedAt] = localStorage.getItem(element)?.split(LOCAL_STORAGE_ACTIVITY_SEPARATOR) as string[]
+      const [id, description, nominal, type, createdAt, updatedAt] = localStorage.getItem(element)?.split(LOCAL_STORAGE_SEPARATOR) as string[]
 
       let typeResult: "1" | "0" = type === "1" ? "1" : "0" 
 
@@ -40,15 +40,15 @@ export const fetchAllActivityFromLocalStorage = () => {
 }
 
 export const fetchUserInfoFromLocalStorage = () => {
-  const keyUser = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_ACTIVITY_SEPARATOR + 'user';
+  const keyUser = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_SEPARATOR + 'user';
   const result: any = {}
 
   for (let index = 0; index < localStorage.length; index++) {
     const element = localStorage.key(index);
     if (element?.startsWith(keyUser)) { 
-      if (element === keyUser + LOCAL_STORAGE_ACTIVITY_SEPARATOR + "name") {
+      if (element === keyUser + LOCAL_STORAGE_SEPARATOR + "name") {
         result.name = localStorage.getItem(element)
-      } else if (element === keyUser + LOCAL_STORAGE_ACTIVITY_SEPARATOR + "locale") {
+      } else if (element === keyUser + LOCAL_STORAGE_SEPARATOR + "locale") {
         result.locale = localStorage.getItem(element)
       }
     }
@@ -58,14 +58,14 @@ export const fetchUserInfoFromLocalStorage = () => {
 }
 
 export const deleteActivityFromLocalStorage = (id: number) => {
-  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR
+  const separator = LOCAL_STORAGE_SEPARATOR
   const prefix = LOCAL_STORAGE_PREFIX 
   const key = `${prefix}${separator}activity${separator}${id}`
   localStorage.removeItem(key)
 }
 
 export const saveUserToLocalStorage = (name: string, locale: string) => {
-  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR;
+  const separator = LOCAL_STORAGE_SEPARATOR;
 
   localStorage.setItem(
     `${LOCAL_STORAGE_PREFIX}${separator}user${separator}name`,

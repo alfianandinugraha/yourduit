@@ -1,5 +1,5 @@
 import React, { ReactNode, useReducer } from 'react'
-import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_ACTIVITY_SEPARATOR } from '../utils/Prefix'
+import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
 
 interface Props {
   children: ReactNode
@@ -11,7 +11,7 @@ interface AuthContext {
 }
 
 const isLoginFromLocalStorage = () => {
-  const separator = LOCAL_STORAGE_ACTIVITY_SEPARATOR;
+  const separator = LOCAL_STORAGE_SEPARATOR;
   const name = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}${separator}user${separator}name`)
   const locale = localStorage.getItem(`${LOCAL_STORAGE_PREFIX}${separator}user${separator}locale`)
 
