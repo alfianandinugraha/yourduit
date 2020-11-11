@@ -32,7 +32,7 @@ export const AboutCreatorPage = () => {
         </Row>
         <AboutCreatorGreeting>
           <Col>
-            <h4 className="text-center">Hello everyone !!!</h4>
+            <h4 className="text-center">Hello world !!!</h4>
           </Col>
         </AboutCreatorGreeting>
         <Row>
