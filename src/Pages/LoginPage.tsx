@@ -17,9 +17,12 @@ const LoginPage = () => {
 
   return (
     <>
-      <LiquidBackground zIndex={1} left="-100px" top="-200px"/>
-      <LiquidBackground zIndex={1} left="-100px" bottom="-200px"/>
-    <div className="bg-primary w-100 d-flex text-white position-relative" style={{ height: '100vh' }}>
+    <LiquidBackground zIndex={1} left="-100px" top="-200px"/>
+    <LiquidBackground zIndex={1} left="-100px" bottom="-200px"/>
+    <div
+      className="bg-primary w-100 d-flex text-white position-relative justify-content-center"
+      style={{ height: '100vh' }}
+    >
       <Container className="m-auto">
         <Row>
           <Col sm="12">
