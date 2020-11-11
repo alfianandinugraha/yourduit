@@ -1,5 +1,13 @@
 import { Activity } from '../Store/ActivityStore';
-import { LOCAL_STORAGE_ACTIVITY_KEY_PREFIX, LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
+import {
+  LOCAL_STORAGE_ACTIVITY_KEY_PREFIX,
+  LOCAL_STORAGE_PREFIX,
+  LOCAL_STORAGE_SEPARATOR,
+  LOCAL_STORAGE_USER_KEY_PREFIX
+} from '../utils/Prefix'
+
+const LOCAL_STORAGE_USER_LOCALE_KEY = LOCAL_STORAGE_USER_KEY_PREFIX + 'locale'
+const LOCAL_STORAGE_USER_NAME_KEY = LOCAL_STORAGE_USER_KEY_PREFIX + 'name'
 
 export const saveActivityToLocalStorage = (activity: Activity) => {
   const separator = LOCAL_STORAGE_SEPARATOR;
@@ -63,14 +71,6 @@ export const deleteActivityFromLocalStorage = (id: number) => {
 }
 
 export const saveUserToLocalStorage = (name: string, locale: string) => {
-  const separator = LOCAL_STORAGE_SEPARATOR;
-
-  localStorage.setItem(
-    `${LOCAL_STORAGE_PREFIX}${separator}user${separator}name`,
-    name
-  )
-  localStorage.setItem(
-    `${LOCAL_STORAGE_PREFIX}${separator}user${separator}locale`,
-    locale
-  )
+  localStorage.setItem(LOCAL_STORAGE_USER_NAME_KEY, name)
+  localStorage.setItem(LOCAL_STORAGE_USER_LOCALE_KEY, locale)
 }
