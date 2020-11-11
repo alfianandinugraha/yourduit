@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ProtectedAuthRoute } from './Auth/ProtectedAuthRoute';
 import { ProtectedRoute } from './Auth/ProtectedRoute';
 import { HamburgerIcon } from './Common/HamburgerIcon';
+import { Backdrop } from './Components/Backdrop';
 import { Sidebar } from './Components/Sidebar';
 import { AboutCreatorPage } from './Pages/AboutCreatorPage';
 import { ActivitiesPage } from './Pages/ActivitiesPage';
@@ -14,10 +15,11 @@ import { SettingsProfilePage } from './Pages/SettingsProfilePage';
 import { themeContext } from './Store/ThemeStore';
 
 function App() {
-  const { setIsSidebarShow, setIsBackdropShow } = useContext(themeContext)
+  const { setIsSidebarShow, setIsBackdropShow, resetActivityFormShow } = useContext(themeContext)
 
   return (
     <>
+      <Backdrop onClick={() => resetActivityFormShow() }/>
       <Sidebar />
       <Container className="position-absolute w-50" style={{ top: 24, zIndex: 500 }}>
         <HamburgerIcon onClick={() => {

@@ -6,7 +6,6 @@ import useInputForm from '../Hooks/useInputForm';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
-import { Backdrop } from './Backdrop';
 
 interface ActivityFormPayload {
   description: string;
@@ -119,8 +118,7 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
             </Col>
           </ActivityFormButtonGroup>
         </Container>
-      </ActivityFormWrapper>    
-      <Backdrop onClick={() => resetActivityFormShow()}/>
+      </ActivityFormWrapper>
     </>
   )
 }

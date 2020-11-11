@@ -9,7 +9,6 @@ import { UserIcon } from '../Common/UserIcon'
 import { authContext } from '../Store/AuthStore'
 import { themeContext } from '../Store/ThemeStore'
 import { SidebarHeader, SidebarHero, SidebarLinkContainer, SidebarWrapper } from '../Style/Styled'
-import { Backdrop } from './Backdrop'
 
 export const Sidebar = () => {
   const { isSidebarShow, resetActivityFormShow } = useContext(themeContext)
@@ -74,7 +73,6 @@ export const Sidebar = () => {
                 </Col>
               </SidebarLinkContainer>
             </SidebarWrapper>
-            <Backdrop onClick={() => resetActivityFormShow()}/>
           </>
         )
       }
