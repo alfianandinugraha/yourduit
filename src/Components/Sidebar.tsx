@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group'
 import { CalendarIcon } from '../Common/CalendarIcon'
 import { DollarIcon } from '../Common/DollarIcon'
 import { HamburgerIcon } from '../Common/HamburgerIcon'
+import { LockIcon } from '../Common/LockIcon'
 import { SettingIcon } from '../Common/SettingIcon'
 import { UserIcon } from '../Common/UserIcon'
 import { authContext } from '../Store/AuthStore'
@@ -60,7 +61,14 @@ export const Sidebar = () => {
           </SidebarHeader>
           <SidebarLinkContainer>
             {
-              !isLoggedIn ? null : protectedNavigation
+              isLoggedIn ? protectedNavigation : (
+                <Col className="col-12">
+                  <Link to="/" style={{ color: '#747474' }} onClick={hideSidebar}>
+                    <LockIcon style={{ marginRight: '1rem' }} fill="#747474" height="20.2" width="18.23" />
+                    <span>Log In</span>
+                  </Link>
+                </Col>
+              )
             }
             <Col className={`col-12 position-absolute mt-${!isLoggedIn ? '0' : '4'}`} style={{bottom: '1rem'}}>
               <Link className="w-100" to="/creator">
