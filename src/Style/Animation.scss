@@ -69,3 +69,27 @@
     }
   }
 }
+
+.alert-slide {
+  &-enter {
+    right: -225%;
+
+    &-active {
+      right: 0;
+      transition: 500ms;
+    }
+
+    &-done {
+      right: 0 !important;
+    }
+  }
+
+  &-exit {
+    right: 0 !important;
+
+    &-active {
+      right: -225% !important;
+      transition: 500ms;
+    }
+  }
+}
