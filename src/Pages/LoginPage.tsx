@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { LiquidBackground } from '../Components/LiquidBackground'
+import { saveUserToLocalStorage } from '../Functions/LocalStorage'
 import useInputForm from '../Hooks/useInputForm'
 import { authContext } from '../Store/AuthStore'
 import { listLocation, LocationCurrency, userInfoContext } from '../Store/UserInfoContext'
 import { WhiteButton } from '../Style/Styled'
-import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
 
 const LoginPage = () => {
   const { setLoggedIn } = useContext(authContext)
@@ -62,17 +62,7 @@ const LoginPage = () => {
                 className="text-primary w-100 m-auto"
                 onClick={
                   () => {
-                    const separator = LOCAL_STORAGE_SEPARATOR;
-
-                    localStorage.setItem(
-                      `${LOCAL_STORAGE_PREFIX}${separator}user${separator}name`,
-                      inputName
-                    )
-                    localStorage.setItem(
-                      `${LOCAL_STORAGE_PREFIX}${separator}user${separator}locale`,
-                      inputCurrency
-                    )
-                    
+                    saveUserToLocalStorage(inputName, inputCurrency)
                     setUserInfo({
                       name: inputName,
                       location: {
