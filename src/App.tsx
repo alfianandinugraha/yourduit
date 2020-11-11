@@ -44,9 +44,7 @@ function App() {
           </ProtectedRoute>
         </Route>
         <Route exact path="/creator">
-          <ProtectedRoute> 
-            <AboutCreatorPage />
-          </ProtectedRoute>
+          <AboutCreatorPage />
         </Route>
         <Route path="/activities/:id">
           <ProtectedRoute> 
