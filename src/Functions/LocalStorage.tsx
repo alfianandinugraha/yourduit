@@ -1,17 +1,17 @@
 import { Activity } from '../Store/ActivityStore';
-import { LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
+import { LOCAL_STORAGE_ACTIVITY_KEY_PREFIX, LOCAL_STORAGE_PREFIX, LOCAL_STORAGE_SEPARATOR } from '../utils/Prefix'
 
 export const saveActivityToLocalStorage = (activity: Activity) => {
   const separator = LOCAL_STORAGE_SEPARATOR;
 
   localStorage.setItem(
-    `${LOCAL_STORAGE_PREFIX}${separator}activity${separator}${activity.id}`,
+    `${LOCAL_STORAGE_ACTIVITY_KEY_PREFIX}${activity.id}`,
     `${activity.id}${separator}${activity.description}${separator}${activity.nominal}${separator}${activity.type}${separator}${activity.createdAt}${separator}${activity.updatedAt}`
   )
 }
 
 export const fetchAllActivityFromLocalStorage = () => {
-  const keyActivity = LOCAL_STORAGE_PREFIX + LOCAL_STORAGE_SEPARATOR + 'activity';
+  const keyActivity = LOCAL_STORAGE_ACTIVITY_KEY_PREFIX;
   const activities: Activity[] = []
 
   for (let index = 0; index < localStorage.length; index++) {
