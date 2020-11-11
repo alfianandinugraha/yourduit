@@ -6,6 +6,7 @@ import useInputForm from '../Hooks/useInputForm';
 import { Activity } from '../Store/ActivityStore'
 import { themeContext } from '../Store/ThemeStore'
 import { ActivityFormButton, ActivityFormButtonGroup, ActivityFormTitle, ActivityFormWrapper, Circle } from '../Style/Styled';
+import { Alert } from './Alert';
 
 interface ActivityFormPayload {
   description: string;
@@ -42,7 +43,13 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
   const [valueDate, setValueDate] = useState(getTime)
 
   const buttonTypeHandler = (type: "1" | "0") => {
+    if (!valueDescription || !valueNominal || !valueDate) {
+      alertHandler()
+      return
+    }
+
     if (!props.getPayload) return
+    setIsAlertShow(false)
     props.getPayload(
       {
         description: valueDescription,
@@ -54,8 +61,18 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
     resetActivityFormShow()
   }
 
+  const [isAlertShow, setIsAlertShow] = useState(false)
+
+  const alertHandler = () => {
+    setIsAlertShow(true)
+    setTimeout(() => {
+      setIsAlertShow(false)
+    }, 2000)
+  }
+
   return (
     <>
+      <Alert message="Please fill the form" variant="danger" isShow={isAlertShow}/>
       <ActivityFormWrapper className="position-fixed w-100">
         <Container className="py-3 h-100 d-flex flex-column">
           <Row className="mb-4">
@@ -65,7 +82,12 @@ export const ActivityForm = (props: Props = { activity: defaultProps }) => {
                 width="30.87px"
                 height="30.87px"
                 className="bg-danger d-flex justify-content-center align-items-center cursor-pointer"
-                onClick={() => resetActivityFormShow()}
+                onClick={() => {
+                  setIsAlertShow(false)
+                  setTimeout(() => {
+                    resetActivityFormShow()
+                  }, isAlertShow ? 500 : 0)
+                }}
               >
                 <PlusIcon width="13px" height="13px" rotate="45deg"/>
               </Circle>
