@@ -157,6 +157,7 @@ export const AlertWrapper = styled(Container)`
   z-index: 9999;
   left: 50%;
   transform: translateX(-50%);
+  height: 55.31px;
   
   .alert-content {
     background-color: white;
